@@ -7,9 +7,7 @@ public class OddNumbersExterminator {
     public List<Integer> exterminate(List<Integer> numbers) {
         List<Integer> evenList = new LinkedList<>();
 
-        if (numbers.isEmpty()) {
-            evenList = null;
-        } else {
+        if (!numbers.isEmpty()) {
             for (Integer number : numbers) {
                 if (number % 2 == 0) {
                     evenList.add(number);

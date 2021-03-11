@@ -25,7 +25,7 @@ public class CollectionTestSuite {
         //When
         compareList = oddNumbersExterminator.exterminate(testList);
         //Then
-        Assertions.assertNull(compareList);
+        Assertions.assertEquals(testList,compareList);
     }
 
     @DisplayName("when create OddNumbersExterminator with normal list" +
