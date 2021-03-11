@@ -1,0 +1,4 @@
+com/kodilla/testing/forum/ForumTestSuite.java
+ com.kodilla.testing.forum.ForumTestSuite
+com/kodilla/testing/collection/CollectionTestSuite.java
+ com.kodilla.testing.collection.CollectionTestSuite

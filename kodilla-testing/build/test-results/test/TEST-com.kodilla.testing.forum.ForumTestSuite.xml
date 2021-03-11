@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="Forum Test Suite" tests="1" skipped="0" failures="0" errors="0" timestamp="2021-03-11T12:24:27" hostname="LAPTOP-R2JI2FRN" time="0.034">
+  <properties/>
+  <testcase name="When created SimpleUser with name, then getUsername should return correct name" classname="com.kodilla.testing.forum.ForumTestSuite" time="0.034"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>
