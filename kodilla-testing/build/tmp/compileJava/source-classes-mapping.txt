@@ -1,8 +1,24 @@
+com/kodilla/testing/shape/Shape.java
+ com.kodilla.testing.shape.Shape
+com/kodilla/testing/shape/Triangle.java
+ com.kodilla.testing.shape.Triangle
+com/kodilla/testing/user/SimpleUser.java
+ com.kodilla.testing.user.SimpleUser
+com/kodilla/testing/shape/Circle.java
+ com.kodilla.testing.shape.Circle
+com/kodilla/testing/shape/Square.java
+ com.kodilla.testing.shape.Square
 com/kodilla/testing/TestingMain.java
  com.kodilla.testing.TestingMain
 com/kodilla/testing/calculator/Calculator.java
  com.kodilla.testing.calculator.Calculator
-com/kodilla/testing/user/SimpleUser.java
- com.kodilla.testing.user.SimpleUser
 com/kodilla/testing/collection/OddNumbersExterminator.java
  com.kodilla.testing.collection.OddNumbersExterminator
+com/kodilla/testing/forum/ForumPost.java
+ com.kodilla.testing.forum.ForumPost
+com/kodilla/testing/forum/ForumComment.java
+ com.kodilla.testing.forum.ForumComment
+com/kodilla/testing/forum/ForumUser.java
+ com.kodilla.testing.forum.ForumUser
+com/kodilla/testing/shape/ShapeCollector.java
+ com.kodilla.testing.shape.ShapeCollector
