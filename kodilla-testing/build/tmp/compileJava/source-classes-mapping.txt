@@ -22,3 +22,7 @@ com/kodilla/testing/forum/ForumUser.java
  com.kodilla.testing.forum.ForumUser
 com/kodilla/testing/shape/ShapeCollector.java
  com.kodilla.testing.shape.ShapeCollector
+com/kodilla/testing/weather/stub/Temperatures.java
+ com.kodilla.testing.weather.stub.Temperatures
+com/kodilla/testing/weather/stub/WeatherForecast.java
+ com.kodilla.testing.weather.stub.WeatherForecast
