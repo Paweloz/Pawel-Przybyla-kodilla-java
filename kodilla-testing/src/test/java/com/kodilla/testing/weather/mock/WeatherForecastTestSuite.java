@@ -4,7 +4,6 @@ import com.kodilla.testing.weather.stub.Temperatures;
 import com.kodilla.testing.weather.stub.WeatherForecast;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeAll;
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mock;
@@ -18,13 +17,13 @@ import static org.mockito.Mockito.when;
 
 @ExtendWith(MockitoExtension.class)
 class WeatherForecastTestSuite {
-    private static Map<String, Double> temperaturesMap = new HashMap<>();
+    private static final Map<String, Double> temperaturesMap = new HashMap<>();
 
     @Mock
     private static Temperatures temperaturesMock;
 
     @BeforeAll
-    private static void init(){
+    public static void init(){
         temperaturesMap.put("Rzeszow", 25.5);
         temperaturesMap.put("Krakow", 26.2);
         temperaturesMap.put("Wroclaw", 24.8);
