@@ -24,12 +24,11 @@ public class WeatherForecast {
 
     public double averageTemp(){
         double sum=0;
-        double average;
 
         for(Map.Entry<String,Double> entry : temperatures.getTemperatures().entrySet()){
             sum += entry.getValue();
         }
-        return average = sum/temperatures.getTemperatures().size();
+        return sum/temperatures.getTemperatures().size();
     }
 
     public double medianTemp(){
