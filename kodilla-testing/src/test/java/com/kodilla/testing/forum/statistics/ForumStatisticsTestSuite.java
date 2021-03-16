@@ -38,9 +38,9 @@ public class ForumStatisticsTestSuite {
         void calculateAdvStatisticsZeroPosts() {
             //Given
             StatisticsCalculations statisticsCalculations = new StatisticsCalculations();
-            statisticsCalculations.calculateAdvStatistics(statisticsMock);
-            //when(statisticsMock.postsCount()).thenReturn(0);                       Unnecessary stubbings detected.
+            when(statisticsMock.postsCount()).thenReturn(0);
             //When
+            statisticsCalculations.calculateAdvStatistics(statisticsMock);
             int postAmount = statisticsCalculations.getPostsTotal();
             //Then
             assertEquals(0, postAmount);
@@ -67,8 +67,9 @@ public class ForumStatisticsTestSuite {
         void calculateAdvStatisticsZeroComments() {
             //Given
             StatisticsCalculations statisticsCalculations = new StatisticsCalculations();
-            //when(statisticsMock.commentsCount()).thenReturn(0);                     Unnecessary stubbings detected.
+            when(statisticsMock.commentsCount()).thenReturn(0);
             //When
+            statisticsCalculations.calculateAdvStatistics(statisticsMock);
             int comentsTotal = statisticsCalculations.getCommentsTotal();
             //Then
             assertEquals(0, comentsTotal);
