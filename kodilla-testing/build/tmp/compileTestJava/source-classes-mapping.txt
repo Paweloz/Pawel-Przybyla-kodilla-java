@@ -1,21 +1,27 @@
 com/kodilla/testing/forum/ForumTestSuite.java
  com.kodilla.testing.forum.ForumTestSuite
-com/kodilla/testing/shape/ShapeCollectorTestSuite.java
- com.kodilla.testing.shape.ShapeCollectorTestSuite
- com.kodilla.testing.shape.ShapeCollectorTestSuite$TestCircle
- com.kodilla.testing.shape.ShapeCollectorTestSuite$TestSquare
- com.kodilla.testing.shape.ShapeCollectorTestSuite$TestTraingle
+com/kodilla/testing/weather/stub/WeatherForecastTestSuite.java
+ com.kodilla.testing.weather.stub.WeatherForecastTestSuite
 com/kodilla/testing/collection/CollectionTestSuite.java
  com.kodilla.testing.collection.CollectionTestSuite
 com/kodilla/testing/forum/tdd/ForumTestSuite.java
  com.kodilla.testing.forum.tdd.ForumTestSuite
  com.kodilla.testing.forum.tdd.ForumTestSuite$TestComments
  com.kodilla.testing.forum.tdd.ForumTestSuite$TestPosts
-com/kodilla/testing/weather/stub/TemperaturesStub.java
- com.kodilla.testing.weather.stub.TemperaturesStub
-com/kodilla/testing/weather/stub/WeatherForecastTestSuite.java
- com.kodilla.testing.weather.stub.WeatherForecastTestSuite
-com/kodilla/testing/weather/mock/WeatherForecastTestSuite.java
- com.kodilla.testing.weather.mock.WeatherForecastTestSuite
 com/kodilla/testing/library/BookDirectoryTestSuite.java
  com.kodilla.testing.library.BookDirectoryTestSuite
+com/kodilla/testing/weather/mock/WeatherForecastTestSuite.java
+ com.kodilla.testing.weather.mock.WeatherForecastTestSuite
+com/kodilla/testing/shape/ShapeCollectorTestSuite.java
+ com.kodilla.testing.shape.ShapeCollectorTestSuite
+ com.kodilla.testing.shape.ShapeCollectorTestSuite$TestCircle
+ com.kodilla.testing.shape.ShapeCollectorTestSuite$TestSquare
+ com.kodilla.testing.shape.ShapeCollectorTestSuite$TestTraingle
+com/kodilla/testing/weather/stub/TemperaturesStub.java
+ com.kodilla.testing.weather.stub.TemperaturesStub
+com/kodilla/testing/forum/statistics/ForumStatisticsTestSuite.java
+ com.kodilla.testing.forum.statistics.ForumStatisticsTestSuite
+ com.kodilla.testing.forum.statistics.ForumStatisticsTestSuite$TestingComments
+ com.kodilla.testing.forum.statistics.ForumStatisticsTestSuite$TestingPosts
+ com.kodilla.testing.forum.statistics.ForumStatisticsTestSuite$TestingShowStatistic
+ com.kodilla.testing.forum.statistics.ForumStatisticsTestSuite$TestingUsers
