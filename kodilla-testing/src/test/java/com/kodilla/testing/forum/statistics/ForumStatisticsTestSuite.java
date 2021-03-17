@@ -41,11 +41,15 @@ public class ForumStatisticsTestSuite {
             //When
             statisticsCalculations.calculateAdvStatistics(statisticsMock);
             int postAmount = statisticsCalculations.getPostsTotal();
+            int commentsTotal = statisticsCalculations.getCommentsTotal();
+            int usersTotal = statisticsCalculations.getUsersTotal();
             double averagePostPerUser = statisticsCalculations.getAveragePostPerUser();
             double averageCommentsPerPost = statisticsCalculations.getAverageCommentsPerPost();
             double averageCommentsPerUser = statisticsCalculations.getAverageCommentsPerUser();
             //Then
-            assertEquals(0, postAmount);
+            assertEquals(0,postAmount);
+            assertEquals(0,commentsTotal);
+            assertEquals(0,usersTotal);
             assertEquals(0,averagePostPerUser);
             assertEquals(0,averageCommentsPerPost);
             assertEquals(0,averageCommentsPerUser);
@@ -61,11 +65,15 @@ public class ForumStatisticsTestSuite {
             //When
             statisticsCalculations.calculateAdvStatistics(statisticsMock);
             int postsTotal = statisticsCalculations.getPostsTotal();
+            int commentsTotal = statisticsCalculations.getCommentsTotal();
+            int usersTotal = statisticsCalculations.getUsersTotal();
             double averagePostPerUser = statisticsCalculations.getAveragePostPerUser();
             double averageCommentsPerPost = statisticsCalculations.getAverageCommentsPerPost();
             double averageCommentsPerUser = statisticsCalculations.getAverageCommentsPerUser();
             //Then
             assertEquals(1000, postsTotal);
+            assertEquals(10,commentsTotal);
+            assertEquals(100,usersTotal);
             assertEquals(10,averagePostPerUser);
             assertEquals(0.01,averageCommentsPerPost);
             assertEquals(0.1,averageCommentsPerUser);
@@ -84,11 +92,15 @@ public class ForumStatisticsTestSuite {
             //When
             statisticsCalculations.calculateAdvStatistics(statisticsMock);
             int comentsTotal = statisticsCalculations.getCommentsTotal();
+            int postsTotal = statisticsCalculations.getPostsTotal();
+            int usersTotal = statisticsCalculations.getUsersTotal();
             double averagePostPerUser = statisticsCalculations.getAveragePostPerUser();
             double averageCommentsPerPost = statisticsCalculations.getAverageCommentsPerPost();
             double averageCommentsPerUser = statisticsCalculations.getAverageCommentsPerUser();
             //Then
             assertEquals(0, comentsTotal);
+            assertEquals(10,postsTotal);
+            assertEquals(100,usersTotal);
             assertEquals(0.1,averagePostPerUser);
             assertEquals(0,averageCommentsPerPost);
             assertEquals(0,averageCommentsPerUser);
@@ -109,11 +121,15 @@ public class ForumStatisticsTestSuite {
             if (comentsTotal < postsTotal) {
                 result = true;
             }
+            int usersTotal = statisticsCalculations.getUsersTotal();
             double averagePostPerUser = statisticsCalculations.getAveragePostPerUser();
             double averageCommentsPerPost = statisticsCalculations.getAverageCommentsPerPost();
             double averageCommentsPerUser = statisticsCalculations.getAverageCommentsPerUser();
             //Then
             assertTrue(result);
+            assertEquals(99, comentsTotal);
+            assertEquals(100,postsTotal);
+            assertEquals(100,usersTotal);
             assertEquals(1,averagePostPerUser);
             assertEquals(0.99,averageCommentsPerPost);
             assertEquals(0.99,averageCommentsPerUser);
@@ -136,11 +152,15 @@ public class ForumStatisticsTestSuite {
             if (comentsTotal > postsTotal) {
                 result = true;
             }
+            int usersTotal = statisticsCalculations.getUsersTotal();
             double averagePostPerUser = statisticsCalculations.getAveragePostPerUser();
             double averageCommentsPerPost = statisticsCalculations.getAverageCommentsPerPost();
             double averageCommentsPerUser = statisticsCalculations.getAverageCommentsPerUser();
             //Then
             assertTrue(result);
+            assertEquals(100, comentsTotal);
+            assertEquals(80,postsTotal);
+            assertEquals(1,usersTotal);
             assertEquals(80,averagePostPerUser);
             assertEquals(1.25,averageCommentsPerPost);
             assertEquals(100,averageCommentsPerUser);
@@ -160,12 +180,16 @@ public class ForumStatisticsTestSuite {
             //When
             statisticsCalculations.calculateAdvStatistics(statisticsMock);
             int usersTotal = statisticsCalculations.getUsersTotal();
+            int postsTotal = statisticsCalculations.getPostsTotal();
+            int comentsTotal = statisticsCalculations.getCommentsTotal();
             double averagePostPerUser = statisticsCalculations.getAveragePostPerUser();
             double averageCommentsPerPost = statisticsCalculations.getAverageCommentsPerPost();
             double averageCommentsPerUser = statisticsCalculations.getAverageCommentsPerUser();
 
             //Then
             assertEquals(0, usersTotal);
+            assertEquals(100, comentsTotal);
+            assertEquals(80,postsTotal);
             assertEquals(0,averagePostPerUser);
             assertEquals(1.25,averageCommentsPerPost);
             assertEquals(0,averageCommentsPerUser);
@@ -182,11 +206,15 @@ public class ForumStatisticsTestSuite {
             //When
             statisticsCalculations.calculateAdvStatistics(statisticsMock);
             int usersTotal = statisticsCalculations.getUsersTotal();
+            int postsTotal = statisticsCalculations.getPostsTotal();
+            int comentsTotal = statisticsCalculations.getCommentsTotal();
             double averagePostPerUser = statisticsCalculations.getAveragePostPerUser();
             double averageCommentsPerPost = statisticsCalculations.getAverageCommentsPerPost();
             double averageCommentsPerUser = statisticsCalculations.getAverageCommentsPerUser();
             //Then
             assertEquals(100, usersTotal);
+            assertEquals(359, comentsTotal);
+            assertEquals(37,postsTotal);
             assertEquals(0.37,averagePostPerUser);
             assertEquals(9.702702702702703,averageCommentsPerPost);
             assertEquals(3.59,averageCommentsPerUser);
