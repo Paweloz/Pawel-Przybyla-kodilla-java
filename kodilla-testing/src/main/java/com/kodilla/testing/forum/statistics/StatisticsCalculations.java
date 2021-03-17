@@ -16,8 +16,17 @@ public class StatisticsCalculations {
         this.usersTotal = statistics.usersNames().size();
         this.commentsTotal = statistics.commentsCount();
         this.averagePostPerUser = (double) statistics.postsCount()/statistics.usersNames().size();
+        if(Double.isNaN(averagePostPerUser) || Double.isInfinite(averagePostPerUser)){
+            averagePostPerUser = 0;
+        }
         this.averageCommentsPerPost = (double) statistics.commentsCount()/statistics.postsCount();
+        if(Double.isNaN(averageCommentsPerPost) || Double.isInfinite(averageCommentsPerPost)){
+            averageCommentsPerPost =0;
+        }
         this.averageCommentsPerUser = (double) statistics.commentsCount()/statistics.usersNames().size();
+        if(Double.isNaN(averageCommentsPerUser) || Double.isInfinite(averageCommentsPerUser)){
+            averageCommentsPerUser =0;
+        }
     }
 
     public String showStatistics(){
