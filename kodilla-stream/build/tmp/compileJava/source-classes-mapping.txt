@@ -1,0 +1,20 @@
+com/kodilla/stream/lambda/ExecuteSaySomething.java
+ com.kodilla.stream.lambda.ExecuteSaySomething
+com/kodilla/stream/lambda/SaySomething.java
+ com.kodilla.stream.lambda.SaySomething
+com/kodilla/stream/lambda/ExpressionExecutor.java
+ com.kodilla.stream.lambda.ExpressionExecutor
+com/kodilla/stream/beautifier/PoemDecorator.java
+ com.kodilla.stream.beautifier.PoemDecorator
+com/kodilla/stream/reference/FunctionalCalculator.java
+ com.kodilla.stream.reference.FunctionalCalculator
+com/kodilla/stream/lambda/Processor.java
+ com.kodilla.stream.lambda.Processor
+com/kodilla/stream/beautifier/PoemBeautifier.java
+ com.kodilla.stream.beautifier.PoemBeautifier
+com/kodilla/stream/lambda/Executor.java
+ com.kodilla.stream.lambda.Executor
+com/kodilla/stream/lambda/MathExpression.java
+ com.kodilla.stream.lambda.MathExpression
+com/kodilla/stream/StreamMain.java
+ com.kodilla.stream.StreamMain

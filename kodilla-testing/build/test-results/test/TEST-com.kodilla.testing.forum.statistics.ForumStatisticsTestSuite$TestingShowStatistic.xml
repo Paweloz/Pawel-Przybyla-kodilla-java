@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="com.kodilla.testing.forum.statistics.ForumStatisticsTestSuite$TestingShowStatistic" tests="1" skipped="0" failures="0" errors="0" timestamp="2021-03-17T12:13:49" hostname="LAPTOP-R2JI2FRN" time="0.55">
+  <properties/>
+  <testcase name="when create statisticsCalculations with given parameters then showStatistics() should show exactly the same parameters" classname="com.kodilla.testing.forum.statistics.ForumStatisticsTestSuite$TestingShowStatistic" time="0.55"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

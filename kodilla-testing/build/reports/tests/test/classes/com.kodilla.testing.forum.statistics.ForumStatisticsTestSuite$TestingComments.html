@@ -3,16 +3,17 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
 <meta http-equiv="x-ua-compatible" content="IE=edge"/>
-<title>Test results - Package com.kodilla.testing.forum</title>
+<title>Test results - TestingComments</title>
 <link href="../css/base-style.css" rel="stylesheet" type="text/css"/>
 <link href="../css/style.css" rel="stylesheet" type="text/css"/>
 <script src="../js/report.js" type="text/javascript"></script>
 </head>
 <body>
 <div id="content">
-<h1>Package com.kodilla.testing.forum</h1>
+<h1>TestingComments</h1>
 <div class="breadcrumbs">
-<a href="../index.html">all</a> &gt; com.kodilla.testing.forum</div>
+<a href="../index.html">all</a> &gt; 
+<a href="../packages/com.kodilla.testing.forum.statistics.html">com.kodilla.testing.forum.statistics</a> &gt; ForumStatisticsTestSuite$TestingComments</div>
 <div id="summary">
 <table>
 <tr>
@@ -22,7 +23,7 @@
 <tr>
 <td>
 <div class="infoBox" id="tests">
-<div class="counter">2</div>
+<div class="counter">3</div>
 <p>tests</p>
 </div>
 </td>
@@ -60,31 +61,37 @@
 <div id="tabs">
 <ul class="tabLinks">
 <li>
-<a href="#tab0">Classes</a>
+<a href="#tab0">Tests</a>
 </li>
 </ul>
 <div id="tab0" class="tab">
-<h2>Classes</h2>
+<h2>Tests</h2>
 <table>
-<thread>
+<thead>
 <tr>
-<th>Class</th>
-<th>Tests</th>
-<th>Failures</th>
-<th>Ignored</th>
+<th>Test</th>
+<th>Method name</th>
 <th>Duration</th>
-<th>Success rate</th>
+<th>Result</th>
 </tr>
-</thread>
+</thead>
 <tr>
-<td class="success">
-<a href="../classes/com.kodilla.testing.forum.ForumTestSuite.html">ForumTestSuite</a>
-</td>
-<td>2</td>
-<td>0</td>
-<td>0</td>
-<td>0.007s</td>
-<td class="success">100%</td>
+<td class="success">when less comments than posts then calculateAdvStatistics() should write higher value in postsTotal than commentsTotal</td>
+<td class="success">calculateAdvStatisticsLessCommentsThanPosts()</td>
+<td class="success">0.003s</td>
+<td class="success">passed</td>
+</tr>
+<tr>
+<td class="success">when more comments than posts then calculateAdvStatistics() should write higher value in commentsTotal than postsTotal</td>
+<td class="success">calculateAdvStatisticsMoreCommentsThanPosts()</td>
+<td class="success">0.002s</td>
+<td class="success">passed</td>
+</tr>
+<tr>
+<td class="success">when 0 comments then calculateAdvStatistics() should write 0 in commentsTotal variable</td>
+<td class="success">calculateAdvStatisticsZeroComments()</td>
+<td class="success">0.002s</td>
+<td class="success">passed</td>
 </tr>
 </table>
 </div>
