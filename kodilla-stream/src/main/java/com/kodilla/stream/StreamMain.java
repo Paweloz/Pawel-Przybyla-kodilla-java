@@ -12,8 +12,8 @@ public class StreamMain {
         String text4 ="Kamil Slimak";
 
         PoemDecorator reverse = (text) -> {
-            StringBuilder output = new StringBuilder(text4).reverse();
-            return output.toString();
+            StringBuilder output = new StringBuilder(text4);
+            return output.reverse().toString();
         };
 
         poemBeautifier.beautify(text1,(text) -> "ABC "+text+" ABC");
