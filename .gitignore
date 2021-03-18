@@ -1,8 +1,6 @@
 HELP.md
 .gradle
 /build/
-**/out/
-**/bulid/
 !gradle/wrapper/gradle-wrapper.jar
 !**/src/main/**/build/
 !**/src/test/**/build/
@@ -27,6 +25,8 @@ bin/
 /out/
 !**/src/main/**/out/
 !**/src/test/**/out/
+**/out/
+**/bulid/
 
 ### NetBeans ###
 /nbproject/private/
