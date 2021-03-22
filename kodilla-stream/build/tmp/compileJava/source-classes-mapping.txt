@@ -56,3 +56,5 @@ com/kodilla/stream/world/Country.java
  com.kodilla.stream.world.Country
 com/kodilla/stream/world/World.java
  com.kodilla.stream.world.World
+com/kodilla/stream/array/ArrayOperations.java
+ com.kodilla.stream.array.ArrayOperations

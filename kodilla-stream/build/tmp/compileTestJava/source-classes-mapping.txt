@@ -6,3 +6,7 @@ com/kodilla/stream/sand/SandStorageTestSuite.java
  com.kodilla.stream.sand.SandStorageTestSuite
 com/kodilla/stream/world/WorldTestSuite.java
  com.kodilla.stream.world.WorldTestSuite
+com/kodilla/stream/book/BookTestSuite.java
+ com.kodilla.stream.book.BookTestSuite
+com/kodilla/stream/array/ArrayOperationsTestSuite.java
+ com.kodilla.stream.array.ArrayOperationsTestSuite
