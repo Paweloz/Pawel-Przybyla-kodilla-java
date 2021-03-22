@@ -1,0 +1,8 @@
+com/kodilla/stream/forum/ForumUserTestSuite.java
+ com.kodilla.stream.forum.ForumUserTestSuite
+com/kodilla/stream/invoice/simple/SimpleInvoiceTestSuite.java
+ com.kodilla.stream.invoice.simple.SimpleInvoiceTestSuite
+com/kodilla/stream/sand/SandStorageTestSuite.java
+ com.kodilla.stream.sand.SandStorageTestSuite
+com/kodilla/stream/world/WorldTestSuite.java
+ com.kodilla.stream.world.WorldTestSuite

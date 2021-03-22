@@ -34,3 +34,25 @@ com/kodilla/stream/forumuser/Forum.java
  com.kodilla.stream.forumuser.Forum
 com/kodilla/stream/StreamMain.java
  com.kodilla.stream.StreamMain
+com/kodilla/stream/forum/ForumUser.java
+ com.kodilla.stream.forum.ForumUser
+com/kodilla/stream/invoice/simple/SimpleItem.java
+ com.kodilla.stream.invoice.simple.SimpleItem
+com/kodilla/stream/invoice/simple/SimpleInvoice.java
+ com.kodilla.stream.invoice.simple.SimpleInvoice
+com/kodilla/stream/invoice/simple/SimpleProduct.java
+ com.kodilla.stream.invoice.simple.SimpleProduct
+com/kodilla/stream/sand/SandStorage.java
+ com.kodilla.stream.sand.SandStorage
+com/kodilla/stream/sand/Asia.java
+ com.kodilla.stream.sand.Asia
+com/kodilla/stream/sand/Europe.java
+ com.kodilla.stream.sand.Europe
+com/kodilla/stream/sand/Africa.java
+ com.kodilla.stream.sand.Africa
+com/kodilla/stream/world/Continent.java
+ com.kodilla.stream.world.Continent
+com/kodilla/stream/world/Country.java
+ com.kodilla.stream.world.Country
+com/kodilla/stream/world/World.java
+ com.kodilla.stream.world.World

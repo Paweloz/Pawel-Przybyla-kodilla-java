@@ -19,7 +19,7 @@ public class StreamMain {
                 .filter(s -> s.getSex() == 'M')
                 .filter(s -> Period.between(s.getBirthDate(),date).getYears() >= 20)
                 .filter(s -> s.getPostsAmount() >= 1)
-                .collect(Collectors.toMap(ForumUser::getUniqueUserIdentifier, Forum -> Forum));
+                .collect(Collectors.toMap(ForumUser::getUniqueUserIdentifier, Forum->Forum));
         // Wyświetla obiekty mapy za pomocą innego strumienia
         forumUserMap.entrySet().stream()
                 .map(entry -> "Unique User Identifier : " + entry.getKey() +" "+ entry.getValue())
