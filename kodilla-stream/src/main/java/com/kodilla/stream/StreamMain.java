@@ -24,6 +24,7 @@ public class StreamMain {
         forumUserMap.entrySet().stream()
                 .map(entry -> "Unique User Identifier : " + entry.getKey() +" "+ entry.getValue())
                 .forEach(System.out::println);
+
     }
 }
 

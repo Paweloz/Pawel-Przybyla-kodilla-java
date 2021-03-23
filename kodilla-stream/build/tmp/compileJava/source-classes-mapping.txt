@@ -32,8 +32,8 @@ com/kodilla/stream/forumuser/ForumUser.java
  com.kodilla.stream.forumuser.ForumUser
 com/kodilla/stream/forumuser/Forum.java
  com.kodilla.stream.forumuser.Forum
-com/kodilla/stream/StreamMain.java
- com.kodilla.stream.StreamMain
+com/kodilla/stream/portfolio/User.java
+ com.kodilla.stream.portfolio.User
 com/kodilla/stream/forum/ForumUser.java
  com.kodilla.stream.forum.ForumUser
 com/kodilla/stream/invoice/simple/SimpleItem.java
@@ -58,3 +58,11 @@ com/kodilla/stream/world/World.java
  com.kodilla.stream.world.World
 com/kodilla/stream/array/ArrayOperations.java
  com.kodilla.stream.array.ArrayOperations
+com/kodilla/stream/portfolio/Board.java
+ com.kodilla.stream.portfolio.Board
+com/kodilla/stream/portfolio/TaskList.java
+ com.kodilla.stream.portfolio.TaskList
+com/kodilla/stream/portfolio/Task.java
+ com.kodilla.stream.portfolio.Task
+com/kodilla/stream/StreamMain.java
+ com.kodilla.stream.StreamMain

@@ -5,6 +5,8 @@ HELP.md
 !**/src/main/**/build/
 !**/src/test/**/build/
 build/
+**/build
+**/out
 ### STS ###
 .apt_generated
 .classpath
