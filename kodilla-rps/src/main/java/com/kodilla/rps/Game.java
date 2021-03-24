@@ -67,7 +67,7 @@ public class Game {
     public boolean keepPlaying(){
         boolean result=false;
         boolean correct =false;
-        System.out.println("\n Game Over. Choose what you whant to do next :");
+        System.out.println("\n Game Over. Choose what you want to do next :");
         System.out.println("Press 'x' to quit game\nPress 'n' to start again");
         Scanner scanner = new Scanner(System.in);
         String decision = scanner.nextLine();
@@ -125,7 +125,7 @@ public class Game {
                 restart = false;
                 playerWins = 0;
                 cpuWins = 0;
-                System.out.println("How many rounds you want to play ?");
+                System.out.println("To how many victories do you want to play ?");
                 Scanner scan = new Scanner(System.in);
                 control = scan.nextInt();
                 menu.instructionDisplay();
