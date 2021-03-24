@@ -11,6 +11,8 @@ Ma zawierać metody :
 
 import java.util.Scanner;
 
+import static java.lang.Integer.parseInt;
+
 public class Menu {
     private String playerName;
     private int rounds;
@@ -27,14 +29,30 @@ public class Menu {
     }
 
     //Wyświetla powitanie gracza oraz ustala jego imię i ilość rund
-    public void helloPlayer(){
+    public void helloPlayer() {
+
         System.out.println("Welcome to the game, what's your name ?");
         Scanner name = new Scanner(System.in);
         playerName = name.nextLine();
-        System.out.println("To how many victories do you want to play ?");
-        Scanner scan = new Scanner(System.in);
-        rounds = scan.nextInt();
     }
+    public int setRounds() {
+        String roundsStr;
+        boolean correct = false;
+        while (!correct) {
+            System.out.println("To how many victories do you want to play ?");
+            Scanner scan = new Scanner(System.in);
+            roundsStr = scan.nextLine();
+            correct = true;
+            try {                                                                   //Obsługuje NumberFormatException
+                rounds = parseInt(roundsStr);
+            } catch (NumberFormatException e) {
+                System.out.println("Wrong input. Please type only numbers");
+                correct = false;
+            }
+        }
+        return rounds;
+    }
+
 
     //Wyświetla instrukcje sterowania grą
     public void instructionDisplay(){

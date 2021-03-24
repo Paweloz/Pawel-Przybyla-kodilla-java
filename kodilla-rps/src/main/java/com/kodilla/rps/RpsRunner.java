@@ -7,6 +7,7 @@ public class RpsRunner {
             Menu menu = new Menu();
             Game game = new Game();
             menu.helloPlayer();
+            menu.setRounds();
             menu.instructionDisplay();
             end = game.playGame(menu.getPlayerName(), menu.getRounds());
             menu.verdict(game);

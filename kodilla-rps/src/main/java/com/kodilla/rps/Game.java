@@ -125,10 +125,7 @@ public class Game {
                 restart = false;
                 playerWins = 0;
                 cpuWins = 0;
-                System.out.println("To how many victories do you want to play ?");
-                Scanner scan = new Scanner(System.in);
-                control = scan.nextInt();
-                menu.instructionDisplay();
+                control = menu.setRounds();
             } else if(restart1.equals("n")){
                 correct = true;
                 restart = false;
