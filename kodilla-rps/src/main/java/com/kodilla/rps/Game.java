@@ -1,5 +1,6 @@
 package com.kodilla.rps;
 
+import java.awt.*;
 import java.util.Random;
 import java.util.Scanner;
 
@@ -14,16 +15,19 @@ public class Game {
     private boolean restart = false;
 
     // Metoda, która przeprowadza rozgrywkę
-    public void playGame(int rounds) {
+    //Przenieś tą metodę do innej klasy
+    public void playGame(String playerName, int rounds) {
         boolean end = false;
         int control = rounds;
         RpsMenu menu = new RpsMenu();
 
         while (!end) {
             playerChoice();
+            //Tu napisz metodę wyłączającą gre
             if (exit){
                 System.out.println("Finish game");
                 end = true;
+                //Tu nappisz metodę restartującą gre
             }else if(restart){
                 System.out.println("Are you sure you want to restart ? y/n");
                 Scanner scan1 = new Scanner(System.in);
@@ -35,22 +39,30 @@ public class Game {
                     System.out.println("How many rounds you want to play ?");
                     Scanner scan = new Scanner(System.in);
                     control = scan.nextInt();
-                    RpsMenu.instructionDisplay();
+                    menu.instructionDisplay();
+                    playerChoice();
+                }else {
+                    restart = false;
+                    menu.pleasePlay();
                     playerChoice();
                 }
             }
             choiceGenerator();
             conclusion();
             if (draw) {
-                System.out.println("DRAW ! CPU also choose " + cpuChoice);
                 draw = false;
+                System.out.println("Round result : DRAW ! \nYou choose "+playerChoice+" and CPU also choose " + cpuChoice+
+                        "\nActual result : "+playerName+" "+playerWins+" : CPU "+cpuWins);
             } else if (winning) {
-                System.out.println("You WON!, CPU choose " + cpuChoice);
-                playerWins++;
                 winning = false;
+                playerWins++;
+                System.out.println("Round result : You WON! \n You choose "+playerChoice+" and CPU choose " + cpuChoice+
+                        "\nActual result : "+playerName+" "+playerWins+" : CPU "+cpuWins);
             } else {
-                System.out.println("You LOST!, CPU choose " + cpuChoice);
                 cpuWins++;
+                System.out.println("Round result : You LOST! \n You choose "+playerChoice+" and CPU choose " + cpuChoice+
+                        "\nActual result : "+playerName+" "+playerWins+" : CPU "+cpuWins);
+
             }
             if (playerWins == control || cpuWins == control ){
                 end = true;
@@ -61,10 +73,12 @@ public class Game {
     // Metoda, która pobiera wybór gracza
     public void playerChoice(){
         boolean end = false;
+        //Odczytuje wybór gracza
         Scanner scan = new Scanner(System.in);
         String read = scan.nextLine();
 
-        while(!end) {                                           //Tak długo wybiera, aż wybór będzie poprawny
+        //Tak długo wybiera, aż wybór będzie poprawny
+        while(!end) {
             if (read.equals("1")) {
                 playerChoice = "ROCK";
                 end = true;
@@ -82,7 +96,8 @@ public class Game {
                 end = true;
             }else {
                 System.out.println("Incorrect choice! Choose again.");
-                RpsMenu.instructionDisplay();
+                RpsMenu menu = new RpsMenu();
+                menu.instructionDisplay();
                 Scanner scanAgain = new Scanner(System.in);
                 read = scanAgain.nextLine();
             }

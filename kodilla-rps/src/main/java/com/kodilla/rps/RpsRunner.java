@@ -5,9 +5,9 @@ public class RpsRunner {
         RpsMenu menu = new RpsMenu();
         Game newGame = new Game();
         menu.helloPlayer();
-        RpsMenu.instructionDisplay();
+        menu.instructionDisplay();
         menu.pleasePlay();
-        newGame.playGame(menu.getRounds());
+        newGame.playGame(menu.getPlayerName(), menu.getRounds());
         menu.verdict(newGame);
     }
 }
