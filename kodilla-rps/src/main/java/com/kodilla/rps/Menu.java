@@ -6,13 +6,12 @@ Ma zawierać metody :
 - Powitanie z pytaniem o imię gracza i ilość rund - Done
 - Wyświetlać informacje z klawiszami obsługi - Done
 - Wyświetlać prośbę o wykonanie ruchu - Done
-- Wyświetlać komunikat o wyniku rundy, ilości wykonanych ruchów i biężącym wyniku gry
 - No koniec gry wyświetla podsumowanie wraz zapytaniem o zakończenie gry lub ponowna gre - Done
  */
 
 import java.util.Scanner;
 
-public class RpsMenu {
+public class Menu {
     private String playerName;
     private int rounds;
 
@@ -25,7 +24,6 @@ public class RpsMenu {
             System.out.println("\n YOU LOST "+"\n"+playerName+" "+ game.getPlayerWins()+" : "+
                     game.getCpuWins()+ " CPU");
         }
-        //Tutaj dopisz jakiś patent na restart gry
     }
 
     //Wyświetla powitanie gracza oraz ustala jego imię i ilość rund
@@ -46,7 +44,7 @@ public class RpsMenu {
 
     //Wyświetla komunikat proszący o wykonanie ruchu
     public void pleasePlay(){
-        System.out.println("Please play your move");
+        System.out.println("\nPlease play your move");
     }
 
     //Gettery
