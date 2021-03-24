@@ -67,6 +67,7 @@ public class Game {
     public boolean keepPlaying(){
         boolean result=false;
         boolean correct =false;
+        System.out.println("\n Game Over. Choose what you whant to do next :");
         System.out.println("Press 'x' to quit game\nPress 'n' to start again");
         Scanner scanner = new Scanner(System.in);
         String decision = scanner.nextLine();

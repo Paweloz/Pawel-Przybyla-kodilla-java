@@ -31,7 +31,7 @@ public class Menu {
         System.out.println("Welcome to the game, what's your name ?");
         Scanner name = new Scanner(System.in);
         playerName = name.nextLine();
-        System.out.println("How many rounds do you want to play ?");
+        System.out.println("To how many victories do you want to play ?");
         Scanner scan = new Scanner(System.in);
         rounds = scan.nextInt();
     }
