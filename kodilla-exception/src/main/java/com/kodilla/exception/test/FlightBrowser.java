@@ -39,8 +39,8 @@ public class FlightBrowser {
         //Upewnia, że zmienie zostały zainicjowane, jak nie to przypisuje im pustą wartość
         Optional<String> optionalArrival = Optional.ofNullable(arrivalAirport);
         Optional<String> optionalDeparture = Optional.ofNullable(departureAirport);
-        departureAirport = optionalDeparture.orElse("");
-        arrivalAirport = optionalArrival.orElse("");
+        departureAirport = optionalDeparture.orElse("x");
+        arrivalAirport = optionalArrival.orElse("x");
 
         //Sprawdza czy zmienne zostały zainicowane właściwym lotniskiem czy "" z Optional
         //Prościej by chyba było z !=null, ale chciałem wytestować Optional
