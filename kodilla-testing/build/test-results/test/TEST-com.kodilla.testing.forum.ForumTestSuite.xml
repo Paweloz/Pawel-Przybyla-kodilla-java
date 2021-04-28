@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="com.kodilla.testing.forum.ForumTestSuite" tests="2" skipped="0" failures="0" errors="0" timestamp="2021-03-17T12:13:49" hostname="LAPTOP-R2JI2FRN" time="0.008">
+<testsuite name="com.kodilla.testing.forum.ForumTestSuite" tests="2" skipped="0" failures="0" errors="0" timestamp="2021-04-28T09:53:41" hostname="LAPTOP-R2JI2FRN" time="0.006">
   <properties/>
-  <testcase name="when create SimpleUser with realName, then getRealName should return real user name" classname="com.kodilla.testing.forum.ForumTestSuite" time="0.006"/>
+  <testcase name="when create SimpleUser with realName, then getRealName should return real user name" classname="com.kodilla.testing.forum.ForumTestSuite" time="0.004"/>
   <testcase name="when create SimpleUser with name, then getUsername should return correct name" classname="com.kodilla.testing.forum.ForumTestSuite" time="0.001"/>
   <system-out><![CDATA[Test Suite: begin
 Test Case: begin

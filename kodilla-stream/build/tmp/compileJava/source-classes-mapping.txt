@@ -1,68 +1,68 @@
-com/kodilla/stream/lambda/ExecuteSaySomething.java
- com.kodilla.stream.lambda.ExecuteSaySomething
-com/kodilla/stream/lambda/SaySomething.java
- com.kodilla.stream.lambda.SaySomething
-com/kodilla/stream/lambda/ExpressionExecutor.java
- com.kodilla.stream.lambda.ExpressionExecutor
-com/kodilla/stream/beautifier/PoemBeautifier.java
- com.kodilla.stream.beautifier.PoemBeautifier
-com/kodilla/stream/reference/FunctionalCalculator.java
- com.kodilla.stream.reference.FunctionalCalculator
-com/kodilla/stream/lambda/Processor.java
- com.kodilla.stream.lambda.Processor
-com/kodilla/stream/lambda/MathExpression.java
- com.kodilla.stream.lambda.MathExpression
-com/kodilla/stream/lambda/Executor.java
- com.kodilla.stream.lambda.Executor
-com/kodilla/stream/beautifier/PoemDecorator.java
- com.kodilla.stream.beautifier.PoemDecorator
-com/kodilla/stream/immutable/Book.java
- com.kodilla.stream.immutable.Book
 com/kodilla/stream/iterate/NumbersGenerator.java
  com.kodilla.stream.iterate.NumbersGenerator
-com/kodilla/stream/immutable/ForumUser.java
- com.kodilla.stream.immutable.ForumUser
-com/kodilla/stream/person/People.java
- com.kodilla.stream.person.People
-com/kodilla/stream/book/Book.java
- com.kodilla.stream.book.Book
-com/kodilla/stream/book/BookDirectory.java
- com.kodilla.stream.book.BookDirectory
-com/kodilla/stream/forumuser/ForumUser.java
- com.kodilla.stream.forumuser.ForumUser
-com/kodilla/stream/forumuser/Forum.java
- com.kodilla.stream.forumuser.Forum
-com/kodilla/stream/portfolio/User.java
- com.kodilla.stream.portfolio.User
-com/kodilla/stream/forum/ForumUser.java
- com.kodilla.stream.forum.ForumUser
 com/kodilla/stream/invoice/simple/SimpleItem.java
  com.kodilla.stream.invoice.simple.SimpleItem
+com/kodilla/stream/person/People.java
+ com.kodilla.stream.person.People
 com/kodilla/stream/invoice/simple/SimpleInvoice.java
  com.kodilla.stream.invoice.simple.SimpleInvoice
-com/kodilla/stream/invoice/simple/SimpleProduct.java
- com.kodilla.stream.invoice.simple.SimpleProduct
-com/kodilla/stream/sand/SandStorage.java
- com.kodilla.stream.sand.SandStorage
-com/kodilla/stream/sand/Asia.java
- com.kodilla.stream.sand.Asia
+com/kodilla/stream/portfolio/User.java
+ com.kodilla.stream.portfolio.User
+com/kodilla/stream/lambda/MathExpression.java
+ com.kodilla.stream.lambda.MathExpression
+com/kodilla/stream/immutable/ForumUser.java
+ com.kodilla.stream.immutable.ForumUser
+com/kodilla/stream/lambda/Processor.java
+ com.kodilla.stream.lambda.Processor
 com/kodilla/stream/sand/Europe.java
  com.kodilla.stream.sand.Europe
+com/kodilla/stream/immutable/Book.java
+ com.kodilla.stream.immutable.Book
+com/kodilla/stream/forum/ForumUser.java
+ com.kodilla.stream.forum.ForumUser
 com/kodilla/stream/sand/Africa.java
  com.kodilla.stream.sand.Africa
-com/kodilla/stream/world/Continent.java
- com.kodilla.stream.world.Continent
 com/kodilla/stream/world/Country.java
  com.kodilla.stream.world.Country
-com/kodilla/stream/world/World.java
- com.kodilla.stream.world.World
-com/kodilla/stream/array/ArrayOperations.java
- com.kodilla.stream.array.ArrayOperations
+com/kodilla/stream/lambda/ExecuteSaySomething.java
+ com.kodilla.stream.lambda.ExecuteSaySomething
 com/kodilla/stream/portfolio/Board.java
  com.kodilla.stream.portfolio.Board
 com/kodilla/stream/portfolio/TaskList.java
  com.kodilla.stream.portfolio.TaskList
-com/kodilla/stream/portfolio/Task.java
- com.kodilla.stream.portfolio.Task
+com/kodilla/stream/lambda/SaySomething.java
+ com.kodilla.stream.lambda.SaySomething
+com/kodilla/stream/lambda/ExpressionExecutor.java
+ com.kodilla.stream.lambda.ExpressionExecutor
+com/kodilla/stream/beautifier/PoemDecorator.java
+ com.kodilla.stream.beautifier.PoemDecorator
+com/kodilla/stream/reference/FunctionalCalculator.java
+ com.kodilla.stream.reference.FunctionalCalculator
+com/kodilla/stream/forumuser/Forum.java
+ com.kodilla.stream.forumuser.Forum
 com/kodilla/stream/StreamMain.java
  com.kodilla.stream.StreamMain
+com/kodilla/stream/invoice/simple/SimpleProduct.java
+ com.kodilla.stream.invoice.simple.SimpleProduct
+com/kodilla/stream/forumuser/ForumUser.java
+ com.kodilla.stream.forumuser.ForumUser
+com/kodilla/stream/array/ArrayOperations.java
+ com.kodilla.stream.array.ArrayOperations
+com/kodilla/stream/portfolio/Task.java
+ com.kodilla.stream.portfolio.Task
+com/kodilla/stream/sand/SandStorage.java
+ com.kodilla.stream.sand.SandStorage
+com/kodilla/stream/sand/Asia.java
+ com.kodilla.stream.sand.Asia
+com/kodilla/stream/book/BookDirectory.java
+ com.kodilla.stream.book.BookDirectory
+com/kodilla/stream/lambda/Executor.java
+ com.kodilla.stream.lambda.Executor
+com/kodilla/stream/world/Continent.java
+ com.kodilla.stream.world.Continent
+com/kodilla/stream/book/Book.java
+ com.kodilla.stream.book.Book
+com/kodilla/stream/beautifier/PoemBeautifier.java
+ com.kodilla.stream.beautifier.PoemBeautifier
+com/kodilla/stream/world/World.java
+ com.kodilla.stream.world.World

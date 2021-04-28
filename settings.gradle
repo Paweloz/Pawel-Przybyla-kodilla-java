@@ -4,4 +4,6 @@ include 'kodilla-stream'
 include 'kodilla-stream'
 include 'kodilla-rps'
 include 'kodilla-exception'
+include 'kodilla-blackjack'
+include 'kodilla-good-patterns'
 

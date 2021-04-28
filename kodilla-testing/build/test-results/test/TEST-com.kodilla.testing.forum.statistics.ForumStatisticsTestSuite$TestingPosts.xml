@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="com.kodilla.testing.forum.statistics.ForumStatisticsTestSuite$TestingPosts" tests="2" skipped="0" failures="0" errors="0" timestamp="2021-03-17T12:13:49" hostname="LAPTOP-R2JI2FRN" time="0.005">
+<testsuite name="com.kodilla.testing.forum.statistics.ForumStatisticsTestSuite$TestingPosts" tests="2" skipped="0" failures="0" errors="0" timestamp="2021-04-28T09:53:42" hostname="LAPTOP-R2JI2FRN" time="0.005">
   <properties/>
-  <testcase name="when 1000 posts then calculateAdvStatistics() should write 1000 in postsTotal variable" classname="com.kodilla.testing.forum.statistics.ForumStatisticsTestSuite$TestingPosts" time="0.002"/>
-  <testcase name="when no poststhen calculateAdvStatistics() should write 0 in postsTotal variable" classname="com.kodilla.testing.forum.statistics.ForumStatisticsTestSuite$TestingPosts" time="0.002"/>
+  <testcase name="when 1000 posts then calculateAdvStatistics() should write 1000 in postsTotal variable" classname="com.kodilla.testing.forum.statistics.ForumStatisticsTestSuite$TestingPosts" time="0.003"/>
+  <testcase name="when no poststhen calculateAdvStatistics() should write 0 in postsTotal variable" classname="com.kodilla.testing.forum.statistics.ForumStatisticsTestSuite$TestingPosts" time="0.001"/>
   <system-out><![CDATA[]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>

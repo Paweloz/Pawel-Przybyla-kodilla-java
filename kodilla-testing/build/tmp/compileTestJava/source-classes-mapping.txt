@@ -17,11 +17,11 @@ com/kodilla/testing/shape/ShapeCollectorTestSuite.java
  com.kodilla.testing.shape.ShapeCollectorTestSuite$TestCircle
  com.kodilla.testing.shape.ShapeCollectorTestSuite$TestSquare
  com.kodilla.testing.shape.ShapeCollectorTestSuite$TestTraingle
-com/kodilla/testing/weather/stub/TemperaturesStub.java
- com.kodilla.testing.weather.stub.TemperaturesStub
 com/kodilla/testing/forum/statistics/ForumStatisticsTestSuite.java
  com.kodilla.testing.forum.statistics.ForumStatisticsTestSuite
  com.kodilla.testing.forum.statistics.ForumStatisticsTestSuite$TestingComments
  com.kodilla.testing.forum.statistics.ForumStatisticsTestSuite$TestingPosts
  com.kodilla.testing.forum.statistics.ForumStatisticsTestSuite$TestingShowStatistic
  com.kodilla.testing.forum.statistics.ForumStatisticsTestSuite$TestingUsers
+com/kodilla/testing/weather/stub/TemperaturesStub.java
+ com.kodilla.testing.weather.stub.TemperaturesStub

@@ -2,8 +2,8 @@ com/kodilla/testing/weather/stub/Temperatures.java
  com.kodilla.testing.weather.stub.Temperatures
 com/kodilla/testing/shape/Circle.java
  com.kodilla.testing.shape.Circle
-com/kodilla/testing/weather/stub/WeatherForecast.java
- com.kodilla.testing.weather.stub.WeatherForecast
+com/kodilla/testing/forum/statistics/StatisticsCalculations.java
+ com.kodilla.testing.forum.statistics.StatisticsCalculations
 com/kodilla/testing/calculator/Calculator.java
  com.kodilla.testing.calculator.Calculator
 com/kodilla/testing/collection/OddNumbersExterminator.java
@@ -36,5 +36,5 @@ com/kodilla/testing/library/BookLibrary.java
  com.kodilla.testing.library.BookLibrary
 com/kodilla/testing/forum/ForumUser.java
  com.kodilla.testing.forum.ForumUser
-com/kodilla/testing/forum/statistics/StatisticsCalculations.java
- com.kodilla.testing.forum.statistics.StatisticsCalculations
+com/kodilla/testing/weather/stub/WeatherForecast.java
+ com.kodilla.testing.weather.stub.WeatherForecast
