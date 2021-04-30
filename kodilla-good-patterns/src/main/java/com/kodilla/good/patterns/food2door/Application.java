@@ -10,8 +10,5 @@ public class Application {
         } catch (IndexOutOfBoundsException e) {
             System.out.println("There is no such order");
         }
-
-
-
     }
 }

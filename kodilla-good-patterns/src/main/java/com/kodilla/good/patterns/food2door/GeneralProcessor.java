@@ -8,8 +8,8 @@ public class GeneralProcessor {
     SomeOtherManufacturer someOtherManufacturer = new SomeOtherManufacturer(new MailService(),
             orderRepository, new OrderService());
 
-    public void processOrder( OrderRequest orderRequest ){
-        switch (orderRequest.getManufacturerName()){
+    public void processOrder( OrderRequest orderRequest ) {
+        switch (orderRequest.getManufacturerName()) {
             case "HealthyShop" :
                 healthyShop.process(orderRequest);
             case "GlutenFreeShop" :
