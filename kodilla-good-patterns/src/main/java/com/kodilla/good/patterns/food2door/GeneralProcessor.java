@@ -1,14 +1,22 @@
 package com.kodilla.good.patterns.food2door;
 
 public class GeneralProcessor {
-    OrderRepository orderRepository = new OrderRepository();
-    HealthyShop healthyShop = new HealthyShop(new MailService(),orderRepository, new OrderService());
-    GlutenFreeShop glutenFreeShop = new GlutenFreeShop(new MailService(),orderRepository, new OrderService());
-    ExtraFoodStore extraFoodStore = new ExtraFoodStore(new MailService(),orderRepository, new OrderService());
-    SomeOtherManufacturer someOtherManufacturer = new SomeOtherManufacturer(new MailService(),
-            orderRepository, new OrderService());
 
-    public void processOrder( OrderRequest orderRequest ) {
+    private final HealthyShop healthyShop;
+    private final GlutenFreeShop glutenFreeShop;
+    private final ExtraFoodStore extraFoodStore;
+    private final SomeOtherManufacturer someOtherManufacturer;
+
+    public GeneralProcessor( HealthyShop healthyShop,
+                            GlutenFreeShop glutenFreeShop, ExtraFoodStore extraFoodStore,
+                            SomeOtherManufacturer someOtherManufacturer) {
+        this.healthyShop = healthyShop;
+        this.glutenFreeShop = glutenFreeShop;
+        this.extraFoodStore = extraFoodStore;
+        this.someOtherManufacturer = someOtherManufacturer;
+    }
+
+    public void processOrder(OrderRequest orderRequest ) {
         switch (orderRequest.getManufacturerName()) {
             case "HealthyShop" :
                 healthyShop.process(orderRequest);
