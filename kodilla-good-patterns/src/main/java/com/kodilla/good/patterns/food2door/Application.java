@@ -7,8 +7,8 @@ public class Application {
         try {
             OrderRequest orderRequest = orderRequestRetriver.retrive(5);
             generalProcessor.processOrder(orderRequest);
-        } catch (IndexOutOfBoundsException e) {
-            System.out.println("There is no such order");
+        } catch (ThereIsNoSuchOrderException e) {
+            System.out.println(e);
         }
     }
 }

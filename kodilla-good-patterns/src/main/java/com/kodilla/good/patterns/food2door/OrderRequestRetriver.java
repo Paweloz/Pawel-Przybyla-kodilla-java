@@ -28,7 +28,10 @@ public class OrderRequestRetriver {
                 "SomeOtherManufacturer", "Dziurawiec",15,
                 LocalDateTime.of(2021,4,7,4,6)));
     }
-    public OrderRequest retrive(int orderNumber) {
+    public OrderRequest retrive(int orderNumber) throws ThereIsNoSuchOrderException {
+        if(orderNumber >= orders.size()){
+            throw new ThereIsNoSuchOrderException("There is no such order");
+        }
         return orders.get(orderNumber);
     }
 }
