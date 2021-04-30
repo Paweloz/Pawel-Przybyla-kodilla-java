@@ -12,12 +12,16 @@ public class GeneralProcessor {
         switch (orderRequest.getManufacturerName()) {
             case "HealthyShop" :
                 healthyShop.process(orderRequest);
+                break;
             case "GlutenFreeShop" :
                 glutenFreeShop.process(orderRequest);
+                break;
             case "ExtraFoodStore" :
                 extraFoodStore.process(orderRequest);
+                break;
             case "SomeOtherManufacturer" :
                 someOtherManufacturer.process(orderRequest);
+                break;
         }
     }
 }

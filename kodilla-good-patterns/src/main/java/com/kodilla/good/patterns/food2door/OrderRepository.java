@@ -10,19 +10,27 @@ public class OrderRepository {
     private final List<OrderRequest> someOtherManufacturer = new LinkedList<>();
 
     public void createOrder( OrderRequest orderRequest ) {
-        switch (orderRequest.getManufacturerName()){
+        switch (orderRequest.getManufacturerName()) {
             case "HealthyShop" :
                 healthyShop.add(orderRequest);
-                System.out.println("Order number "+orderRequest.getOrderNumber()+" has been added to HealthyShop database");
+                System.out.println("Order number "+orderRequest.getOrderNumber()+
+                        " has been added to HealthyShop database");
+                break;
             case "GlutenFreeShop" :
                 glutenFreeShop.add(orderRequest);
-                System.out.println("Order number "+orderRequest.getOrderNumber()+" has been to GlutenFreeShop database");
+                System.out.println("Order number "+orderRequest.getOrderNumber()+
+                        " has been added GlutenFreeShop database");
+                break;
             case "ExtraFoodStore" :
                 extraFoodStore.add(orderRequest);
-                System.out.println("Order number "+orderRequest.getOrderNumber()+" has been to ExtraFoodStore database");
+                System.out.println("Order number "+orderRequest.getOrderNumber()+
+                        " has been added ExtraFoodStore database");
+                break;
             case "SomeOtherManufacturer" :
                 someOtherManufacturer.add(orderRequest);
-                System.out.println("Order number "+orderRequest.getOrderNumber()+" has been to SomeOtherManufacturer database");
+                System.out.println("Order number "+orderRequest.getOrderNumber()+
+                        " has been added SomeOtherManufacturer database");
+                break;
         }
     }
 

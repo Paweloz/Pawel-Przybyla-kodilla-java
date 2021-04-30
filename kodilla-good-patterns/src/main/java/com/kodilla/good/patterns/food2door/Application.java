@@ -5,7 +5,7 @@ public class Application {
         GeneralProcessor generalProcessor = new GeneralProcessor();
         OrderRequestRetriver orderRequestRetriver = new OrderRequestRetriver();
         try {
-            OrderRequest orderRequest = orderRequestRetriver.retrive(5);
+            OrderRequest orderRequest = orderRequestRetriver.retrive(2);
             generalProcessor.processOrder(orderRequest);
         } catch (ThereIsNoSuchOrderException e) {
             System.out.println(e);
