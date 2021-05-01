@@ -1,35 +1,18 @@
 package com.kodilla.good.patterns.food2door;
 
+import java.util.Set;
+
 public class GeneralProcessor {
 
-    private final HealthyShop healthyShop;
-    private final GlutenFreeShop glutenFreeShop;
-    private final ExtraFoodStore extraFoodStore;
-    private final SomeOtherManufacturer someOtherManufacturer;
+    private final Set<Manufacturer> companies;
 
-    public GeneralProcessor( HealthyShop healthyShop,
-                            GlutenFreeShop glutenFreeShop, ExtraFoodStore extraFoodStore,
-                            SomeOtherManufacturer someOtherManufacturer) {
-        this.healthyShop = healthyShop;
-        this.glutenFreeShop = glutenFreeShop;
-        this.extraFoodStore = extraFoodStore;
-        this.someOtherManufacturer = someOtherManufacturer;
+    public GeneralProcessor( Set<Manufacturer> companies) {
+        this.companies = companies;
     }
 
     public void processOrder(OrderRequest orderRequest ) {
-        switch (orderRequest.getManufacturerName()) {
-            case "HealthyShop" :
-                healthyShop.process(orderRequest);
-                break;
-            case "GlutenFreeShop" :
-                glutenFreeShop.process(orderRequest);
-                break;
-            case "ExtraFoodStore" :
-                extraFoodStore.process(orderRequest);
-                break;
-            case "SomeOtherManufacturer" :
-                someOtherManufacturer.process(orderRequest);
-                break;
-        }
+        companies.stream()
+                .filter(manufacturer -> manufacturer.getShopName().equals(orderRequest.getManufacturerName()))
+                .forEach(manufacturer -> manufacturer.process(orderRequest));
     }
 }

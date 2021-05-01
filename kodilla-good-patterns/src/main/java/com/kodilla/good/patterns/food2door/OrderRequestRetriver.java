@@ -11,22 +11,22 @@ public class OrderRequestRetriver {
     public OrderRequestRetriver() {
         orders.add(new OrderRequest(1, new Customer("Andrzej"),
                 "HealthyShop", "Humus",5,
-                LocalDateTime.of(2021,3,31,17,57)));
+                LocalDateTime.of(2021,3,31,17,57), "HS"));
         orders.add(new OrderRequest(2, new Customer("Miro"),
                 "ExtraFoodStore", "Pieprz",1,
-                LocalDateTime.of(2021,4,29,16,2)));
+                LocalDateTime.of(2021,4,29,16,2), "EFS"));
         orders.add(new OrderRequest(3, new Customer("Kalina"),
                 "ExtraFoodStore", "Zioła",3,
-                LocalDateTime.of(2021,3,29,22,12)));
+                LocalDateTime.of(2021,3,29,22,12), "EFS"));
         orders.add(new OrderRequest(4, new Customer("Aśka"),
                 "GlutenFreeShop", "Herbata",24,
-                LocalDateTime.of(2021,3,21,2,36)));
+                LocalDateTime.of(2021,3,21,2,36), "GFS"));
         orders.add(new OrderRequest(5, new Customer("Piotrek"),
                 "HealthyShop", "Kawa",4,
-                LocalDateTime.of(2021,4,17,14,26)));
+                LocalDateTime.of(2021,4,17,14,26), "HS"));
         orders.add(new OrderRequest(6, new Customer("Halina"),
                 "SomeOtherManufacturer", "Dziurawiec",15,
-                LocalDateTime.of(2021,4,7,4,6)));
+                LocalDateTime.of(2021,4,7,4,6), "SOM"));
     }
     public OrderRequest retrive(int orderNumber) throws ThereIsNoSuchOrderException {
         if(orderNumber >= orders.size()){

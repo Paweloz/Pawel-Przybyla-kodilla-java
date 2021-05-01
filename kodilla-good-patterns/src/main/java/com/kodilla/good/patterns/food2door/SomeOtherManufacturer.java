@@ -1,5 +1,7 @@
 package com.kodilla.good.patterns.food2door;
 
+import java.util.Objects;
+
 public class SomeOtherManufacturer implements Manufacturer {
     private final InformationService informationService;
     private final OrderRepository orderRepository;
@@ -21,5 +23,23 @@ public class SomeOtherManufacturer implements Manufacturer {
             return new OrderDto(orderRequest.getCustomer(),true);
         }
         return new OrderDto(orderRequest.getCustomer(), false);
+    }
+
+    @Override
+    public String getShopName() {
+        return "SomeOtherManufacturer";
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        SomeOtherManufacturer that = (SomeOtherManufacturer) o;
+        return informationService.equals(that.informationService) && orderRepository.equals(that.orderRepository) && orderService.equals(that.orderService);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(informationService, orderRepository, orderService);
     }
 }

@@ -9,14 +9,16 @@ public class OrderRequest {
     private final String productType;
     private final int quantity;
     private final LocalDateTime orderTime;
+    private final String companySignature;
 
-    public OrderRequest(int orderNumber, Customer customer, String manufacturerName, String productType, int quantity, LocalDateTime orderTime) {
+    public OrderRequest(int orderNumber, Customer customer, String manufacturerName, String productType, int quantity, LocalDateTime orderTime, String companySignature) {
         this.orderNumber = orderNumber;
         this.customer = customer;
         this.manufacturerName = manufacturerName;
         this.productType = productType;
         this.quantity = quantity;
         this.orderTime = orderTime;
+        this.companySignature = companySignature;
     }
 
     public Customer getCustomer() {
@@ -41,5 +43,9 @@ public class OrderRequest {
 
     public LocalDateTime getOrderTime() {
         return orderTime;
+    }
+
+    public String getCompanySignature() {
+        return companySignature;
     }
 }
