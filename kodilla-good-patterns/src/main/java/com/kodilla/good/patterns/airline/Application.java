@@ -7,9 +7,11 @@ public class Application {
         Search search = new Search(flightDataBase);
         FlightRequestCollector flightRequestCollector = new FlightRequestCollector(flightDataBase,customerDataBase);
         FlightRequest flightRequest = flightRequestCollector.collect();
-
-        search.searchFlightsFrom(flightRequest);
-        search.searchFlightsTo(flightRequest);
-        search.searchFlightsVia(flightRequest);
+        SearchResultDto resultsFrom = search.searchFlightsFrom(flightRequest);
+        System.out.println(resultsFrom);
+        SearchResultDto resultsTo = search.searchFlightsTo(flightRequest);
+        System.out.println(resultsTo);
+        SearchResultDto resultsVia = search.searchFlightsVia(flightRequest);
+        System.out.println(resultsVia);
     }
 }

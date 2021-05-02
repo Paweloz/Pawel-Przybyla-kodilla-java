@@ -1,5 +1,8 @@
 package com.kodilla.good.patterns.airline;
 
+import java.util.List;
+import java.util.stream.Collectors;
+
 public class Search {
 
     private final RoutesDataBase flightDataBase;
@@ -8,37 +11,41 @@ public class Search {
         this.flightDataBase = flightDataBase;
     }
 
-    public void searchFlightsFrom(FlightRequest flightRequest) {
+    public SearchResultDto searchFlightsFrom(FlightRequest flightRequest) {
         System.out.println("\nRequest from customer : " + flightRequest.getCustomer() +
                 "\nAll avaliable flights from " + flightRequest.getRoute().getDepartureAirport());
 
-        flightDataBase.getRoutesDataBase().stream()
+        List<Route> result = flightDataBase.getRoutesDataBase().stream()
                 .filter(port -> port.getDepartureAirport().equals(flightRequest.getRoute().getDepartureAirport()))
-                .forEach(System.out::println);
+                .collect(Collectors.toList());
+        return new SearchResultDto(result, result.isEmpty());
     }
 
-    public void searchFlightsTo(FlightRequest flightRequest) {
+    public SearchResultDto searchFlightsTo(FlightRequest flightRequest) {
         System.out.println("\nRequest from customer : " + flightRequest.getCustomer() +
                 "\nAll avaliable flights to " + flightRequest.getRoute().getArrivalAriport());
 
-        flightDataBase.getRoutesDataBase().stream()
+        List<Route> result = flightDataBase.getRoutesDataBase().stream()
                 .filter(port -> port.getArrivalAriport().equals(flightRequest.getRoute().getArrivalAriport()))
-                .forEach(System.out::println);
+                .collect(Collectors.toList());
+        return new SearchResultDto(result, result.isEmpty());
     }
 
-    public void searchFlightsVia(FlightRequest flightRequest) {
+    public SearchResultDto searchFlightsVia(FlightRequest flightRequest) {
         System.out.println("\nRequest from customer : " + flightRequest.getCustomer() +
                 "\nAll avalible flights from " +
                 flightRequest.getRoute().getDepartureAirport() + " to " +
                 flightRequest.getRoute().getArrivalAriport() + " via "+ flightRequest.getViaAirport());
 
-        flightDataBase.getRoutesDataBase().stream()
+        List<Route> resultFirstTrip = flightDataBase.getRoutesDataBase().stream()
                 .filter(port -> port.getDepartureAirport().equals(flightRequest.getRoute().getDepartureAirport()))
                 .filter(port -> port.getArrivalAriport().equals(flightRequest.getViaAirport()))
-                .forEach(System.out::println);
-        flightDataBase.getRoutesDataBase().stream()
+                .collect(Collectors.toList());
+        List<Route> resultSecondTrip = flightDataBase.getRoutesDataBase().stream()
                 .filter(port -> port.getDepartureAirport().equals(flightRequest.getViaAirport()))
                 .filter(port -> port.getArrivalAriport().equals(flightRequest.getRoute().getArrivalAriport()))
-                .forEach(System.out::println);
+                .collect(Collectors.toList());
+        resultFirstTrip.addAll(resultSecondTrip);
+        return new SearchResultDto(resultFirstTrip, resultFirstTrip.isEmpty());
     }
 }
