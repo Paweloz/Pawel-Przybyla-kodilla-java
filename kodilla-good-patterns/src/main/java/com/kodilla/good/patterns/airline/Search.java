@@ -31,18 +31,18 @@ public class Search {
         return new SearchResultDto(result, result.isEmpty());
     }
 
-    public SearchResultDto searchFlightsVia(FlightRequest flightRequest) {
+    public SearchResultDto searchFlightsVia(FlightRequest flightRequest, String viaAirport) {
         System.out.println("\nRequest from customer : " + flightRequest.getCustomer() +
                 "\nAll avalible flights from " +
                 flightRequest.getRoute().getDepartureAirport() + " to " +
-                flightRequest.getRoute().getArrivalAriport() + " via "+ flightRequest.getViaAirport());
+                flightRequest.getRoute().getArrivalAriport() + " via "+ viaAirport);
 
         List<Route> resultFirstTrip = flightDataBase.getRoutesDataBase().stream()
                 .filter(port -> port.getDepartureAirport().equals(flightRequest.getRoute().getDepartureAirport()))
-                .filter(port -> port.getArrivalAriport().equals(flightRequest.getViaAirport()))
+                .filter(port -> port.getArrivalAriport().equals(viaAirport))
                 .collect(Collectors.toList());
         List<Route> resultSecondTrip = flightDataBase.getRoutesDataBase().stream()
-                .filter(port -> port.getDepartureAirport().equals(flightRequest.getViaAirport()))
+                .filter(port -> port.getDepartureAirport().equals(viaAirport))
                 .filter(port -> port.getArrivalAriport().equals(flightRequest.getRoute().getArrivalAriport()))
                 .collect(Collectors.toList());
         resultFirstTrip.addAll(resultSecondTrip);

@@ -2,6 +2,7 @@ package com.kodilla.good.patterns.airline;
 
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Random;
 
 public class CustomerDataBase {
     private final List<Customer> customersList = new LinkedList<>();
@@ -17,5 +18,10 @@ public class CustomerDataBase {
 
     public List<Customer> getCustomersList() {
         return customersList;
+    }
+    public Customer getCustomer(){
+        Random gen = new Random();
+        int randomCustomer = gen.nextInt(customersList.size());
+        return customersList.get(randomCustomer);
     }
 }

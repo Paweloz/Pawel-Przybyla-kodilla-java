@@ -3,12 +3,10 @@ package com.kodilla.good.patterns.airline;
 public class FlightRequest {
     private final Customer customer;
     private final Route route;
-    private final String viaAirport;
 
-    public FlightRequest(Customer customer, Route route, String viaAirport) {
+    public FlightRequest(Customer customer, Route route) {
         this.customer = customer;
         this.route = route;
-        this.viaAirport = viaAirport;
     }
 
     public Customer getCustomer() {
@@ -25,9 +23,5 @@ public class FlightRequest {
                  customer +
                  route +
                 '}';
-    }
-
-    public String getViaAirport() {
-        return viaAirport;
     }
 }
