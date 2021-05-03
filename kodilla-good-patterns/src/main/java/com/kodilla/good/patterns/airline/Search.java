@@ -11,39 +11,40 @@ public class Search {
         this.flightDataBase = flightDataBase;
     }
 
-    public SearchResultDto searchFlightsFrom(FlightRequest flightRequest) {
-        System.out.println("\nRequest from customer : " + flightRequest.getCustomer() +
-                "\nAll avaliable flights from " + flightRequest.getRoute().getDepartureAirport());
+    public SearchResultDto searchFlightsFrom(Customer customer, String departureAirport) {
+        System.out.println("\nRequest from customer : " + customer +
+                "\nAll avaliable flights from " + departureAirport);
 
         List<Route> result = flightDataBase.getRoutesDataBase().stream()
-                .filter(port -> port.getDepartureAirport().equals(flightRequest.getRoute().getDepartureAirport()))
+                .filter(port -> port.getDepartureAirport().equals(departureAirport))
                 .collect(Collectors.toList());
         return new SearchResultDto(result, result.isEmpty());
     }
 
-    public SearchResultDto searchFlightsTo(FlightRequest flightRequest) {
-        System.out.println("\nRequest from customer : " + flightRequest.getCustomer() +
-                "\nAll avaliable flights to " + flightRequest.getRoute().getArrivalAriport());
+    public SearchResultDto searchFlightsTo(Customer customer, String arrivalAirport) {
+        System.out.println("\nRequest from customer : " + customer +
+                "\nAll avaliable flights to " + arrivalAirport);
 
         List<Route> result = flightDataBase.getRoutesDataBase().stream()
-                .filter(port -> port.getArrivalAriport().equals(flightRequest.getRoute().getArrivalAriport()))
+                .filter(port -> port.getArrivalAriport().equals(arrivalAirport))
                 .collect(Collectors.toList());
         return new SearchResultDto(result, result.isEmpty());
     }
 
-    public SearchResultDto searchFlightsVia(FlightRequest flightRequest, String viaAirport) {
-        System.out.println("\nRequest from customer : " + flightRequest.getCustomer() +
+    public SearchResultDto searchFlightsVia(Customer customer, String departureAirport, String arrivalAirport,
+                                            String viaAirport) {
+        System.out.println("\nRequest from customer : " + customer +
                 "\nAll avalible flights from " +
-                flightRequest.getRoute().getDepartureAirport() + " to " +
-                flightRequest.getRoute().getArrivalAriport() + " via "+ viaAirport);
+                departureAirport + " to " +
+                arrivalAirport + " via "+ viaAirport);
 
         List<Route> resultFirstTrip = flightDataBase.getRoutesDataBase().stream()
-                .filter(port -> port.getDepartureAirport().equals(flightRequest.getRoute().getDepartureAirport()))
+                .filter(port -> port.getDepartureAirport().equals(departureAirport))
                 .filter(port -> port.getArrivalAriport().equals(viaAirport))
                 .collect(Collectors.toList());
         List<Route> resultSecondTrip = flightDataBase.getRoutesDataBase().stream()
                 .filter(port -> port.getDepartureAirport().equals(viaAirport))
-                .filter(port -> port.getArrivalAriport().equals(flightRequest.getRoute().getArrivalAriport()))
+                .filter(port -> port.getArrivalAriport().equals(arrivalAirport))
                 .collect(Collectors.toList());
         resultFirstTrip.addAll(resultSecondTrip);
         return new SearchResultDto(resultFirstTrip, resultFirstTrip.isEmpty());

@@ -4,18 +4,17 @@ public class Application {
     public static void main(String[] args) {
         RoutesDataBase flightDataBase = new RoutesDataBase();
         CustomerDataBase customerDataBase = new CustomerDataBase();
+        Customer customer = customerDataBase.getCustomer();
         Search search = new Search(flightDataBase);
-        FlightRequestCollector flightRequestCollector = new FlightRequestCollector(flightDataBase,customerDataBase);
-        FlightRequest flightRequest = flightRequestCollector.collect();
 
-        SearchResultDto resultsFrom = search.searchFlightsFrom(flightRequest);
+        SearchResultDto resultsFrom = search.searchFlightsFrom(customer,"KRAKOW");
         System.out.println(resultsFrom);
 
-        SearchResultDto resultsTo = search.searchFlightsTo(flightRequest);
+        SearchResultDto resultsTo = search.searchFlightsTo(customer, "bytom");
         System.out.println(resultsTo);
 
-        String viaAirport = flightRequestCollector.generateStop(flightRequest);
-        SearchResultDto resultsVia = search.searchFlightsVia(flightRequest, viaAirport);
+        SearchResultDto resultsVia = search.searchFlightsVia(customer, "GDANSK", "KRAKOW",
+                "WARSZAWA");
         System.out.println(resultsVia);
     }
 }

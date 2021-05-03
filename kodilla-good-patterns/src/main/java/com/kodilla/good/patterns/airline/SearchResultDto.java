@@ -4,19 +4,23 @@ import java.util.List;
 
 public class SearchResultDto {
     private final List<Route> trips;
-    private final boolean noResults;
+    private final boolean isEmpty;
 
-    public SearchResultDto(List<Route> trips, boolean isFound) {
+    public SearchResultDto(List<Route> trips, boolean isEmpty) {
         this.trips = trips;
-        this.noResults = isFound;
+        this.isEmpty = isEmpty;
     }
 
     @Override
     public String toString() {
         StringBuilder result= new StringBuilder();
-        for(Route route : trips){
-            result.append(route).append("\n");
+        if(isEmpty){
+            result.append("Sorry, no flights has been found\n");
+        }else {
+            for (Route route : trips) {
+                result.append(route).append("\n");
+            }
         }
-        return result + "Found trips : " + !noResults;
+        return result + "Found flights : " + !isEmpty;
     }
 }
