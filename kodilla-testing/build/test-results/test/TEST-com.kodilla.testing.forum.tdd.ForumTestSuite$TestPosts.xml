@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="Test for posts" tests="4" skipped="0" failures="0" errors="0" timestamp="2021-05-06T12:03:21" hostname="LAPTOP-R2JI2FRN" time="0.003">
+<testsuite name="Test for posts" tests="4" skipped="0" failures="0" errors="0" timestamp="2021-05-10T16:33:18" hostname="LAPTOP-R2JI2FRN" time="0.003">
   <properties/>
-  <testcase name="testRemovePostNotExisting()" classname="com.kodilla.testing.forum.tdd.ForumTestSuite$TestPosts" time="0.001"/>
-  <testcase name="testAddPost()" classname="com.kodilla.testing.forum.tdd.ForumTestSuite$TestPosts" time="0.001"/>
-  <testcase name="testGetPost()" classname="com.kodilla.testing.forum.tdd.ForumTestSuite$TestPosts" time="0.0"/>
-  <testcase name="testRemovePost()" classname="com.kodilla.testing.forum.tdd.ForumTestSuite$TestPosts" time="0.0"/>
+  <testcase name="testRemovePostNotExisting()" classname="com.kodilla.testing.forum.tdd.ForumTestSuite$TestPosts" time="0.0"/>
+  <testcase name="testAddPost()" classname="com.kodilla.testing.forum.tdd.ForumTestSuite$TestPosts" time="0.0"/>
+  <testcase name="testGetPost()" classname="com.kodilla.testing.forum.tdd.ForumTestSuite$TestPosts" time="0.001"/>
+  <testcase name="testRemovePost()" classname="com.kodilla.testing.forum.tdd.ForumTestSuite$TestPosts" time="0.001"/>
   <system-out><![CDATA[Preparing to execute test #5
 Preparing to execute test #6
 Preparing to execute test #7

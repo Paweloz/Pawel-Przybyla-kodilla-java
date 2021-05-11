@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="com.kodilla.testing.forum.statistics.ForumStatisticsTestSuite$TestingUsers" tests="2" skipped="0" failures="0" errors="0" timestamp="2021-05-06T12:03:20" hostname="LAPTOP-R2JI2FRN" time="0.01">
+<testsuite name="com.kodilla.testing.forum.statistics.ForumStatisticsTestSuite$TestingUsers" tests="2" skipped="0" failures="0" errors="0" timestamp="2021-05-10T16:33:18" hostname="LAPTOP-R2JI2FRN" time="0.006">
   <properties/>
-  <testcase name="when 100 zero users then calculateAdvStatistics() should write 100 in usersTotal" classname="com.kodilla.testing.forum.statistics.ForumStatisticsTestSuite$TestingUsers" time="0.006"/>
+  <testcase name="when 100 zero users then calculateAdvStatistics() should write 100 in usersTotal" classname="com.kodilla.testing.forum.statistics.ForumStatisticsTestSuite$TestingUsers" time="0.002"/>
   <testcase name="when zero users then calculateAdvStatistics() should write 0  in usersTotal" classname="com.kodilla.testing.forum.statistics.ForumStatisticsTestSuite$TestingUsers" time="0.003"/>
   <system-out><![CDATA[]]></system-out>
   <system-err><![CDATA[]]></system-err>

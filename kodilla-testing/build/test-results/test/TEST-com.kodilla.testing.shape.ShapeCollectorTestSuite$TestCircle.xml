@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="Tests for Circle" tests="4" skipped="0" failures="0" errors="0" timestamp="2021-05-06T12:03:21" hostname="LAPTOP-R2JI2FRN" time="0.006">
+<testsuite name="Tests for Circle" tests="4" skipped="0" failures="0" errors="0" timestamp="2021-05-10T16:33:18" hostname="LAPTOP-R2JI2FRN" time="0.004">
   <properties/>
   <testcase name="testShowFigures()" classname="com.kodilla.testing.shape.ShapeCollectorTestSuite$TestCircle" time="0.002"/>
-  <testcase name="testRemoveFigure()" classname="com.kodilla.testing.shape.ShapeCollectorTestSuite$TestCircle" time="0.0"/>
+  <testcase name="testRemoveFigure()" classname="com.kodilla.testing.shape.ShapeCollectorTestSuite$TestCircle" time="0.001"/>
   <testcase name="testAddFigure()" classname="com.kodilla.testing.shape.ShapeCollectorTestSuite$TestCircle" time="0.0"/>
-  <testcase name="testGetFigure()" classname="com.kodilla.testing.shape.ShapeCollectorTestSuite$TestCircle" time="0.001"/>
+  <testcase name="testGetFigure()" classname="com.kodilla.testing.shape.ShapeCollectorTestSuite$TestCircle" time="0.0"/>
   <system-out><![CDATA[]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>
