@@ -1,6 +1,6 @@
 package com.kodilla.patterns.singleton;
 
-import org.junit.jupiter.api.Assertions;git
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 public class LoggerTestSuite {
