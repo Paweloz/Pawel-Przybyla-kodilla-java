@@ -14,7 +14,6 @@ public class LibraryTestSuite {
     void testGetBook() {
         //Given
         Library library = new Library("Local Library");
-
         Book book1 = new Book("Ogniem i mieczem", "Henryk Sienkiewicz",
                 LocalDate.of(1884,10,24));
         Book book2 = new Book("Wiedzmin", "Andrzej Sapkowski",
