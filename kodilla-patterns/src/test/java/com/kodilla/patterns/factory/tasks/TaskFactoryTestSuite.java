@@ -15,24 +15,15 @@ public class TaskFactoryTestSuite {
         Task shoppingTask = taskFactory.createTask(TaskFactory.SHOPPINGTASK);
         Task paintingTask = taskFactory.createTask(TaskFactory.PAINTINGTASK);
         Task drivingTask = taskFactory.createTask(TaskFactory.DRIVINGTASK);
-        if (shoppingTask != null) {
-            shoppingTask.executeTask();
-        }
-        if (paintingTask != null) {
-            paintingTask.executeTask();
-        }
-        if (drivingTask != null) {
-            drivingTask.executeTask();
-        }
+        shoppingTask.executeTask();
+        paintingTask.executeTask();
+        drivingTask.executeTask();
 
         //Then
-        assertNotNull(shoppingTask);
         assertEquals("Buy Food", shoppingTask.getTaskName());
         assertTrue(shoppingTask.isTaskExecuted());
-        assertNotNull(paintingTask);
         assertEquals("Paint Room", paintingTask.getTaskName());
         assertTrue(paintingTask.isTaskExecuted());
-        assertNotNull(drivingTask);
         assertEquals("Driving", drivingTask.getTaskName());
         assertTrue(drivingTask.isTaskExecuted());
     }
