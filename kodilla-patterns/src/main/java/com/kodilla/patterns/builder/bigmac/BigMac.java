@@ -77,6 +77,4 @@ public class BigMac {
                 "\n Sauce type : " + sauce.getSauce() +
                 "\n Ingridients : " + ingredients;
     }
-
-
 }

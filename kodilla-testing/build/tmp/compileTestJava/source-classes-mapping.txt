@@ -25,3 +25,5 @@ com/kodilla/testing/forum/statistics/ForumStatisticsTestSuite.java
  com.kodilla.testing.forum.statistics.ForumStatisticsTestSuite$TestingUsers
 com/kodilla/testing/weather/stub/TemperaturesStub.java
  com.kodilla.testing.weather.stub.TemperaturesStub
+com/kodilla/testing/loop/testLoopAndConditionalBreakpoints.java
+ com.kodilla.testing.loop.testLoopAndConditionalBreakpoints

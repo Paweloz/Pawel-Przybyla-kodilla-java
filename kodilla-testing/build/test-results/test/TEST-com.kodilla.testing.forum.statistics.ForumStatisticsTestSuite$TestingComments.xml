@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="com.kodilla.testing.forum.statistics.ForumStatisticsTestSuite$TestingComments" tests="3" skipped="0" failures="0" errors="0" timestamp="2021-05-10T16:33:18" hostname="LAPTOP-R2JI2FRN" time="0.009">
-  <properties/>
-  <testcase name="when less comments than posts then calculateAdvStatistics() should write higher value in postsTotal than commentsTotal" classname="com.kodilla.testing.forum.statistics.ForumStatisticsTestSuite$TestingComments" time="0.002"/>
-  <testcase name="when 0 comments then calculateAdvStatistics() should write 0 in commentsTotal variable" classname="com.kodilla.testing.forum.statistics.ForumStatisticsTestSuite$TestingComments" time="0.002"/>
-  <testcase name="when more comments than posts then calculateAdvStatistics() should write higher value in commentsTotal than postsTotal" classname="com.kodilla.testing.forum.statistics.ForumStatisticsTestSuite$TestingComments" time="0.003"/>
-  <system-out><![CDATA[]]></system-out>
-  <system-err><![CDATA[]]></system-err>
-</testsuite>
