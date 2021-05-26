@@ -6,6 +6,7 @@ import java.sql.SQLException;
 import java.util.Properties;
 
 public class DbManager {
+    Integer a[];
 
     private Connection conn;
     private static DbManager dbManagerInstance;
