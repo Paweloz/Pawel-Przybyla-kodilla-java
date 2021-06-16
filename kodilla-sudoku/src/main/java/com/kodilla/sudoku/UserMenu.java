@@ -20,7 +20,6 @@ public class UserMenu {
         while (!done) {
             Scanner scanner = new Scanner(System.in);
             String input = scanner.nextLine();
-            int in = 0;
 
             if(input.equals(SUDOKU)) {
                 done = true;
@@ -32,7 +31,9 @@ public class UserMenu {
                 } catch (NumberFormatException e) {
                     System.out.println("Incorrect input format");
                 }
-                sudokuBoard.getSudokuRows().get(col - 1).getElementsInRow().get(row - 1).setValue(value);
+                sudokuBoard.getBoard().get(col - 1).getElementsInRow().get(row - 1).setValue(value);
+                sudokuBoard.getBoard().get(col - 1).getElementsInRow().get(row - 1).getPossibleValues().clear();
+
                 System.out.println(sudokuBoard);
             }
         }
