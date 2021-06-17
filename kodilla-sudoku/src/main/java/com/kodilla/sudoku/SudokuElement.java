@@ -2,19 +2,22 @@ package com.kodilla.sudoku;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Objects;
 
 public class SudokuElement{
     public static int EMPTY = -1;
     private int value;
     private List<Integer> possibleValues = new ArrayList<>();
+    private int size;
+    private int boxX;
+    private int boxY;
     private int x;
     private int y;
     private int boxNumber;
 
-    public SudokuElement() {
+    public SudokuElement(int size) {
+        this.size = size;
         this.value = EMPTY;
-        for(int i = 0; i<9; i++) {
+        for(int i = 0; i<size; i++) {
             possibleValues.add(i+1);
         }
     }
@@ -29,11 +32,25 @@ public class SudokuElement{
     @Override
     public String toString() {
         if(value == EMPTY) {
-            return "|-";
+            return "| - ";
+        } else if(value >= 10) {
+            return "|"+value+" ";
         }
-        return "|"+value;
+        return "| "+value+" ";
     }
 
+    public int getBoxX() {
+        return boxX;
+    }
+    public void setBoxX(int boxX) {
+        this.boxX = boxX;
+    }
+    public int getBoxY() {
+        return boxY;
+    }
+    public void setBoxY(int boxY) {
+        this.boxY = boxY;
+    }
     public int getBoxNumber() {
         return boxNumber;
     }

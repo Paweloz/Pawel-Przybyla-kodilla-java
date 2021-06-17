@@ -5,17 +5,23 @@ import java.util.List;
 
 public class SudokuBoard extends Prototype<SudokuBoard> {
     private List<SudokuRow> board = new ArrayList<>();
-    private int size = 0;
+    private int col = 0;
+    private int row = 0;
+    private final int size;
+    private int quantity = 0;
 
-    public SudokuBoard() {
-        for(int i=0; i<9; i++) {
-            SudokuRow sudokuRow = new SudokuRow();
+    public SudokuBoard(int size) {
+        this.size = size;
+        for(int i=0; i<size; i++) {
+            SudokuRow sudokuRow = new SudokuRow(size);
+            sudokuRow.setRowNumber(i);
             for (SudokuElement sudokuElement : sudokuRow.getElementsInRow()) {
                 sudokuElement.setY(i);
-                size++;
+                quantity++;
             }
             this.board.add(sudokuRow);
         }
+        buildBoard();
         assingBoxes();
     }
 
@@ -27,96 +33,63 @@ public class SudokuBoard extends Prototype<SudokuBoard> {
         this.board = board;
     }
 
-
-
-    //Big brain time ... wymyśl coś sprytniejszego
     public void assingBoxes() {
+        assignBoxCoordinates();
+        for (SudokuRow sudokuRow : board) {
+            for (SudokuElement sudokuElement : sudokuRow.getElementsInRow()) {
+                sudokuElement.setBoxNumber(sudokuElement.getBoxY() * col + sudokuElement.getBoxX());
+            }
+        }
+    }
 
-        for( SudokuRow sudokuRow : board) {
-            for( SudokuElement sudokuElement : sudokuRow.getElementsInRow() ) {
-                if(sudokuElement.getX() <=2 && sudokuElement.getY() <=2) {
-                    sudokuElement.setBoxNumber(1);
-                } else if ( sudokuElement.getX() > 2 && sudokuElement.getX() <= 5 && sudokuElement.getY() <= 2) {
-                    sudokuElement.setBoxNumber(2);
-                } else if ( sudokuElement.getX() > 5 && sudokuElement.getX() <= 8 && sudokuElement.getY() <= 2) {
-                    sudokuElement.setBoxNumber(3);
-                } else if ( sudokuElement.getX() <=2 && sudokuElement.getY() > 2 && sudokuElement.getY() <= 5) {
-                    sudokuElement.setBoxNumber(4);
-                } else if ( sudokuElement.getX() > 2 && sudokuElement.getX() <= 5 &&
-                        sudokuElement.getY() > 2 && sudokuElement.getY() <= 5) {
-                    sudokuElement.setBoxNumber(5);
-                } else if ( sudokuElement.getX() > 5 && sudokuElement.getX() <= 8 &&
-                        sudokuElement.getY() > 2 && sudokuElement.getY() <= 5) {
-                    sudokuElement.setBoxNumber(6);
-                } else if ( sudokuElement.getX() <= 2 && sudokuElement.getY() > 5 && sudokuElement.getY() <= 8) {
-                    sudokuElement.setBoxNumber(7);
-                } else if ( sudokuElement.getX() > 2 && sudokuElement.getX() <= 5 &&
-                        sudokuElement.getY() > 5 && sudokuElement.getY() <= 8) {
-                    sudokuElement.setBoxNumber(8);
-                }else if ( sudokuElement.getX() > 5 && sudokuElement.getX() <=8 &&
-                        sudokuElement.getY() > 5 && sudokuElement.getY() <= 8) {
-                    sudokuElement.setBoxNumber(9);
+    private void assignBoxCoordinates() {
+        int boxY = 0;
+        for (SudokuRow sudokuRow : board) {
+            int boxX = 0;
+            if(sudokuRow.getRowNumber()%col == 0 && sudokuRow.getRowNumber() != 0) boxY++;
+            for (SudokuElement sudokuElement : sudokuRow.getElementsInRow()) {
+                if (sudokuElement.getX() % row != 0 || sudokuElement.getX() == 0) {
+                    sudokuElement.setBoxX(boxX);
+                    sudokuElement.setBoxY(boxY);
+                } else {
+                    boxX++;
+                    sudokuElement.setBoxX(boxX);
+                    sudokuElement.setBoxY(boxY);
                 }
+            }
+        }
+    }
+
+    private void buildBoard() {
+        List<Integer> divisiable = new ArrayList<>();
+
+        for(int n=2; n<10; n++) {
+            if(size%n == 0) {
+                divisiable.add(n);
+            }
+        }
+        int prev = divisiable.get(0);
+        for(Integer num : divisiable) {
+            if(num * num == size) {
+                col = num;
+                row = num;
+                break;
+            }else if( prev * num == size) {
+                col = prev;
+                row = num;
+                break;
+            }else {
+                prev = num;
             }
         }
     }
 
     public int getSize() {
-        return size;
-    }
-
-    //Valid sudokuBoard for debugging purpuse only !! TO BE DELETED
-    public void hardInitialize() {
-        board.get(0).getElementsInRow().get(1).setValue(2);
-        board.get(0).getElementsInRow().get(3).setValue(5);
-        board.get(0).getElementsInRow().get(5).setValue(1);
-        board.get(0).getElementsInRow().get(7).setValue(9);
-
-        board.get(1).getElementsInRow().get(0).setValue(8);
-        board.get(1).getElementsInRow().get(3).setValue(2);
-        board.get(1).getElementsInRow().get(5).setValue(3);
-        board.get(1).getElementsInRow().get(8).setValue(6);
-
-        board.get(2).getElementsInRow().get(1).setValue(3);
-        board.get(2).getElementsInRow().get(4).setValue(6);
-        board.get(2).getElementsInRow().get(7).setValue(7);
-
-        board.get(3).getElementsInRow().get(2).setValue(1);
-        board.get(3).getElementsInRow().get(6).setValue(6);
-
-        board.get(4).getElementsInRow().get(0).setValue(5);
-        board.get(4).getElementsInRow().get(1).setValue(4);
-        board.get(4).getElementsInRow().get(7).setValue(1);
-        board.get(4).getElementsInRow().get(8).setValue(9);
-
-        board.get(5).getElementsInRow().get(2).setValue(2);
-        board.get(5).getElementsInRow().get(6).setValue(7);
-
-        board.get(6).getElementsInRow().get(1).setValue(9);
-        board.get(6).getElementsInRow().get(4).setValue(3);
-        board.get(6).getElementsInRow().get(7).setValue(8);
-
-        board.get(7).getElementsInRow().get(0).setValue(2);
-        board.get(7).getElementsInRow().get(3).setValue(8);
-        board.get(7).getElementsInRow().get(5).setValue(4);
-        board.get(7).getElementsInRow().get(8).setValue(7);
-
-        board.get(8).getElementsInRow().get(1).setValue(1);
-        board.get(8).getElementsInRow().get(3).setValue(9);
-        board.get(8).getElementsInRow().get(5).setValue(7);
-        board.get(8).getElementsInRow().get(7).setValue(6);
-
-        for(SudokuRow sudokuRow : board) {
-            for (SudokuElement sudokuElement : sudokuRow.getElementsInRow()) {
-                if(sudokuElement.getValue() != -1) {
-                    sudokuElement.getPossibleValues().clear();
-                }
-            }
-        }
+        return quantity;
     }
 
     public SudokuBoard deepCopy() {
-        SudokuBoard clonedBoard = new SudokuBoard();
+        SudokuBoard clonedBoard = new SudokuBoard(size);
         try {
             clonedBoard = super.clone();
         } catch (CloneNotSupportedException e) {
@@ -126,10 +99,10 @@ public class SudokuBoard extends Prototype<SudokuBoard> {
         clonedBoard.setBoard(new ArrayList<>());
 
         for(SudokuRow sudokuRow : board) {
-            SudokuRow clonedRow = new SudokuRow();
+            SudokuRow clonedRow = new SudokuRow(size);
             clonedRow.getElementsInRow().clear();
             for(SudokuElement sudokuElement : sudokuRow.getElementsInRow()) {
-                SudokuElement copiedElement = new SudokuElement();
+                SudokuElement copiedElement = new SudokuElement(size);
                 copiedElement.setValue(sudokuElement.getValue());
                 copiedElement.setX(sudokuElement.getX());
                 copiedElement.setY(sudokuElement.getY());
@@ -148,16 +121,29 @@ public class SudokuBoard extends Prototype<SudokuBoard> {
     @Override
     public String toString() {
         StringBuilder board = new StringBuilder();
+        String spacer = drawSpacer();
+
         int counter = 1;
         for(SudokuRow sudokuRow : this.board) {
-            if (counter == 3) {
+            if (counter == col) {
                 counter = 0;
-                board.append(sudokuRow.toString()).append("\n\n");
+                board.append(sudokuRow.toString(row)).append("\n\n");
             }else {
-                board.append(sudokuRow.toString()).append("\n").append("-------    -------    -------\n");
+                board.append(sudokuRow.toString(row)).append("\n").append(spacer).append("\n");
             }
             counter++;
         }
         return board.toString();
+    }
+
+    private String drawSpacer() {
+        StringBuilder spacer = new StringBuilder();
+        String dash = "-";
+        String space = "    ";
+        String line = dash.repeat(row * 4 + 1);
+        for(int n=0; n<col; n++) {
+            spacer.append(line).append(space);
+        }
+        return spacer.toString();
     }
 }

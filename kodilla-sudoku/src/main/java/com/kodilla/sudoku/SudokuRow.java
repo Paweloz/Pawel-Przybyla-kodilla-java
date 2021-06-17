@@ -5,25 +5,33 @@ import java.util.List;
 
 public class SudokuRow {
     private List<SudokuElement> row = new ArrayList<>();
+    private final int size;
+    private int rowNumber;
 
-    public SudokuRow() {
-        for(int i=0; i<9; i++) {
-            SudokuElement sudokuElement = new SudokuElement();
+    public SudokuRow(int size) {
+        this.size = size;
+        for(int i=0; i<size; i++) {
+            SudokuElement sudokuElement = new SudokuElement(size);
             sudokuElement.setX(i);
             this.row.add(sudokuElement);
         }
     }
 
+    public int getRowNumber() {
+        return rowNumber;
+    }
+    public void setRowNumber(int rowNumber) {
+        this.rowNumber = rowNumber;
+    }
     public List<SudokuElement> getElementsInRow() {
         return row;
     }
 
-    @Override
-    public String toString() {
+    public String toString(int line) {
         String result = "";
         int counter = 0;
         for(SudokuElement sudokuElement : row) {
-            if(counter == 3) {
+            if(counter == line) {
                 counter = 0;
                 result += "|    ";
             }

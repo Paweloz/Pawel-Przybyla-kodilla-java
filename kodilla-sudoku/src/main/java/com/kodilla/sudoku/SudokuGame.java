@@ -25,10 +25,8 @@ public class SudokuGame {
         int filledElements = 0;
         boolean finished = false;
 
-        //sudokuBoard.hardInitialize();
         workingBoard = sudokuBoard.deepCopy();
         backTrack.push(new SudokuDto(sudokuBoard.deepCopy(), -1, -1, 0));
-        //System.out.println(workingBoard);
 
         while (!finished) {
             if(filledElements == workingBoard.getSize()) {
@@ -37,6 +35,7 @@ public class SudokuGame {
                 filledElements = 0;
                 for(SudokuRow sudokuRow : workingBoard.getBoard()) {
                     for(SudokuElement sudokuElement : sudokuRow.getElementsInRow() ) {
+
                         if(sudokuElement.getValue() == -1) {
                             HashSet<Integer> value = new HashSet<>();
                             value.addAll(checkRow(sudokuElement, sudokuRow));
