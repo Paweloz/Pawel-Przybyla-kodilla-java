@@ -5,6 +5,7 @@ import java.util.List;
 
 public class SudokuRow {
     private List<SudokuElement> row = new ArrayList<>();
+    private SudokuDrawer sudokuDrawer;
     private final int size;
     private int rowNumber;
 
@@ -28,16 +29,7 @@ public class SudokuRow {
     }
 
     public String toString(int line) {
-        String result = "";
-        int counter = 0;
-        for(SudokuElement sudokuElement : row) {
-            if(counter == line) {
-                counter = 0;
-                result += "|    ";
-            }
-            result += sudokuElement.toString();
-            counter++;
-        }
-        return result+"|";
+        sudokuDrawer = SudokuDrawer.getInstance();
+        return sudokuDrawer.drawRow(line, this);
     }
 }

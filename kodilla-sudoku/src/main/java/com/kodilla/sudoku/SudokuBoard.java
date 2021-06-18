@@ -5,6 +5,7 @@ import java.util.List;
 
 public class SudokuBoard extends Prototype<SudokuBoard> {
     private List<SudokuRow> board = new ArrayList<>();
+    private SudokuDrawer sudokuDrawer;
     private int col = 0;
     private int row = 0;
     private final int size;
@@ -48,14 +49,11 @@ public class SudokuBoard extends Prototype<SudokuBoard> {
             int boxX = 0;
             if(sudokuRow.getRowNumber()%col == 0 && sudokuRow.getRowNumber() != 0) boxY++;
             for (SudokuElement sudokuElement : sudokuRow.getElementsInRow()) {
-                if (sudokuElement.getX() % row != 0 || sudokuElement.getX() == 0) {
-                    sudokuElement.setBoxX(boxX);
-                    sudokuElement.setBoxY(boxY);
-                } else {
+                if (sudokuElement.getX() % row == 0 && sudokuElement.getX() != 0) {
                     boxX++;
-                    sudokuElement.setBoxX(boxX);
-                    sudokuElement.setBoxY(boxY);
                 }
+                sudokuElement.setBoxX(boxX);
+                sudokuElement.setBoxY(boxY);
             }
         }
     }
@@ -82,10 +80,6 @@ public class SudokuBoard extends Prototype<SudokuBoard> {
                 prev = num;
             }
         }
-    }
-
-    public int getSize() {
-        return quantity;
     }
 
     public SudokuBoard deepCopy() {
@@ -118,32 +112,14 @@ public class SudokuBoard extends Prototype<SudokuBoard> {
         return  clonedBoard;
     }
 
-    @Override
-    public String toString() {
-        StringBuilder board = new StringBuilder();
-        String spacer = drawSpacer();
-
-        int counter = 1;
-        for(SudokuRow sudokuRow : this.board) {
-            if (counter == col) {
-                counter = 0;
-                board.append(sudokuRow.toString(row)).append("\n\n");
-            }else {
-                board.append(sudokuRow.toString(row)).append("\n").append(spacer).append("\n");
-            }
-            counter++;
-        }
-        return board.toString();
+    public int getSize() {
+        return quantity;
     }
 
-    private String drawSpacer() {
-        StringBuilder spacer = new StringBuilder();
-        String dash = "-";
-        String space = "    ";
-        String line = dash.repeat(row * 4 + 1);
-        for(int n=0; n<col; n++) {
-            spacer.append(line).append(space);
-        }
-        return spacer.toString();
+
+    @Override
+    public String toString() {
+        sudokuDrawer = SudokuDrawer.getInstance();
+        return sudokuDrawer.drawBoard(this, col, row);
     }
 }

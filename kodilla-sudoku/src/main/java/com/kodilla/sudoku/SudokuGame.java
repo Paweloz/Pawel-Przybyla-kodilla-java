@@ -5,7 +5,9 @@ import java.util.*;
 public class SudokuGame {
     private final UserMenu userMenu;
     private final SudokuBoard sudokuBoard;
+    private SudokuValidator sudokuValidator;
     private boolean actionOccured = false;
+    private boolean finished = false;
     private SudokuBoard workingBoard;
     private final Stack<SudokuDto> backTrack = new Stack<>();
     boolean isAvaliable = true;
@@ -17,17 +19,17 @@ public class SudokuGame {
     }
 
     public void initalize() {
-        userMenu.displayMenu();
         userMenu.userInput(sudokuBoard);
     }
 
     public boolean resolveSudoku() {
         int filledElements = 0;
-        boolean finished = false;
-
+        finished = false;
         workingBoard = sudokuBoard.deepCopy();
         backTrack.push(new SudokuDto(sudokuBoard.deepCopy(), -1, -1, 0));
+        sudokuValidator = SudokuValidator.getInstance();
 
+        checkIncorrectValues();
         while (!finished) {
             if(filledElements == workingBoard.getSize()) {
                 finished = true;
@@ -35,19 +37,9 @@ public class SudokuGame {
                 filledElements = 0;
                 for(SudokuRow sudokuRow : workingBoard.getBoard()) {
                     for(SudokuElement sudokuElement : sudokuRow.getElementsInRow() ) {
-
                         if(sudokuElement.getValue() == -1) {
-                            HashSet<Integer> value = new HashSet<>();
-                            value.addAll(checkRow(sudokuElement, sudokuRow));
-                            value.addAll(checkColumn(sudokuElement));
-                            value.addAll(checkBox(sudokuElement));
-                            Object[] table = value.toArray();
-                            if(value.size() == 1) {
-                                int valueToSet = (int) table[0];
-                                sudokuElement.setValue(valueToSet);
-                                sudokuElement.getPossibleValues().clear();
-                                actionOccured = true;
-                            }
+                            HashSet<Integer> value = collectValues(sudokuRow, sudokuElement);
+                            setValueToElement(sudokuElement, value);
                         }else {
                             filledElements++;
                         }
@@ -61,6 +53,31 @@ public class SudokuGame {
         }
         System.out.println(workingBoard);
         return true;
+    }
+
+    private HashSet<Integer> collectValues(SudokuRow sudokuRow, SudokuElement sudokuElement) {
+        HashSet<Integer> value = new HashSet<>();
+        value.addAll(checkRow(sudokuElement, sudokuRow));
+        value.addAll(checkColumn(sudokuElement));
+        value.addAll(checkBox(sudokuElement));
+        return value;
+    }
+
+    private void setValueToElement(SudokuElement sudokuElement, HashSet<Integer> value) {
+        Object[] table = value.toArray();
+        if(value.size() == 1) {
+            int valueToSet = (int) table[0];
+            sudokuElement.setValue(valueToSet);
+            sudokuElement.getPossibleValues().clear();
+            actionOccured = true;
+        }
+    }
+
+    private void checkIncorrectValues() {
+        if(!sudokuValidator.validateBoard(this, sudokuBoard)) {
+            finished = true;
+            System.out.println("Given sudoku is incorrect");
+        }
     }
 
     public List<Integer> checkRow(SudokuElement sudokuElement, SudokuRow sudokuRow) {
@@ -131,7 +148,7 @@ public class SudokuGame {
         elementsWithTheSamePossibleNumber = 0;
     }
 
-    private List<SudokuElement> selectBox(SudokuElement sudokuElement) {
+    public List<SudokuElement> selectBox(SudokuElement sudokuElement) {
         List<SudokuElement> elementsInBox = new ArrayList<>();
         for( SudokuRow sudokuRow : workingBoard.getBoard()) {
             for( SudokuElement elementToCheck : sudokuRow.getElementsInRow()) {
@@ -151,7 +168,8 @@ public class SudokuGame {
             try {
                 workingBoard = resumeBoard();
             } catch (InvalidSudokuException e) {
-                System.out.println("Wprowadzone sudoku jest nieprawidłowe");
+                System.out.println("Given sudoku is incorrect");
+                finished = true;
             }
         }
     }
@@ -203,13 +221,5 @@ public class SudokuGame {
                 }
             }
         }
-    }
-
-    public SudokuBoard getSudokuBoard() {
-        return sudokuBoard;
-    }
-
-    public Stack<SudokuDto> getBackTrack() {
-        return backTrack;
     }
 }

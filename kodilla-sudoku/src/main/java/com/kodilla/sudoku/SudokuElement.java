@@ -2,12 +2,13 @@ package com.kodilla.sudoku;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 public class SudokuElement{
     public static int EMPTY = -1;
     private int value;
+    private SudokuDrawer sudokuDrawer;
     private List<Integer> possibleValues = new ArrayList<>();
-    private int size;
     private int boxX;
     private int boxY;
     private int x;
@@ -15,7 +16,6 @@ public class SudokuElement{
     private int boxNumber;
 
     public SudokuElement(int size) {
-        this.size = size;
         this.value = EMPTY;
         for(int i = 0; i<size; i++) {
             possibleValues.add(i+1);
@@ -31,12 +31,22 @@ public class SudokuElement{
 
     @Override
     public String toString() {
-        if(value == EMPTY) {
-            return "| - ";
-        } else if(value >= 10) {
-            return "|"+value+" ";
-        }
-        return "| "+value+" ";
+        sudokuDrawer = SudokuDrawer.getInstance();
+        return sudokuDrawer.drawElement(this);
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof SudokuElement)) return false;
+        SudokuElement that = (SudokuElement) o;
+        return getValue() == that.getValue() && getBoxX() == that.getBoxX() && getBoxY() == that.getBoxY() &&
+                getX() == that.getX() && getY() == that.getY() && getBoxNumber() == that.getBoxNumber();
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(getValue(), getBoxX(), getBoxY(), getX(), getY(), getBoxNumber());
     }
 
     public int getBoxX() {
