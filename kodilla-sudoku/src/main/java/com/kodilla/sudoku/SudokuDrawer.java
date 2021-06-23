@@ -1,13 +1,13 @@
 package com.kodilla.sudoku;
 
-public class SudokuDrawer {
+public enum SudokuDrawer {
 
-    private static SudokuDrawer sudokuDrawer;
+    INSTANCE;
 
-    private SudokuDrawer(){}
-
-    public String drawBoard(SudokuBoard sudokuBoard,int col, int row) {
+    public String drawBoard(SudokuBoard sudokuBoard,Coordinates coordinates) {
         StringBuilder board = new StringBuilder();
+        int col = coordinates.getY();
+        int row = coordinates.getX();
         String spacer = drawSpacer(col, row);
 
         int counter = 1;
@@ -24,14 +24,14 @@ public class SudokuDrawer {
     }
 
     public String drawRow(int line, SudokuRow row) {
-        String result = "";
+        StringBuilder result = new StringBuilder();
         int counter = 0;
         for(SudokuElement sudokuElement : row.getElementsInRow()) {
             if(counter == line) {
                 counter = 0;
-                result += "|    ";
+                result.append("|    ");
             }
-            result += sudokuElement.toString();
+            result.append(sudokuElement.toString());
             counter++;
         }
         return result+"|";
@@ -56,13 +56,4 @@ public class SudokuDrawer {
         }
         return spacer.toString();
     }
-
-    public static SudokuDrawer getInstance() {
-        if(sudokuDrawer == null) {
-            return new SudokuDrawer();
-        }
-        return sudokuDrawer;
-    }
-
-
 }

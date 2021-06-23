@@ -4,13 +4,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class SudokuRow {
-    private List<SudokuElement> row = new ArrayList<>();
-    private SudokuDrawer sudokuDrawer;
-    private final int size;
+    private final List<SudokuElement> row = new ArrayList<>();
     private int rowNumber;
 
     public SudokuRow(int size) {
-        this.size = size;
         for(int i=0; i<size; i++) {
             SudokuElement sudokuElement = new SudokuElement(size);
             sudokuElement.setX(i);
@@ -29,7 +26,7 @@ public class SudokuRow {
     }
 
     public String toString(int line) {
-        sudokuDrawer = SudokuDrawer.getInstance();
+        SudokuDrawer sudokuDrawer = SudokuDrawer.INSTANCE;
         return sudokuDrawer.drawRow(line, this);
     }
 }

@@ -2,84 +2,52 @@ package com.kodilla.sudoku;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Objects;
 
 public class SudokuElement{
     public static int EMPTY = -1;
-    private int value;
-    private SudokuDrawer sudokuDrawer;
-    private List<Integer> possibleValues = new ArrayList<>();
-    private int boxX;
-    private int boxY;
-    private int x;
-    private int y;
-    private int boxNumber;
+    private final List<Integer> possibleValues = new ArrayList<>();
+    private final Coordinates coordinates;
+    private SudokuBox sudokuBox;
+
 
     public SudokuElement(int size) {
-        this.value = EMPTY;
+        this.coordinates = new Coordinates(-1,-1,EMPTY);
         for(int i = 0; i<size; i++) {
             possibleValues.add(i+1);
         }
     }
 
-    public int getValue() {
-        return value;
+    @Override
+    public String toString() {
+        SudokuDrawer sudokuDrawer = SudokuDrawer.INSTANCE;
+        return sudokuDrawer.drawElement(this);
+    }
+
+    public int getY() {
+        return coordinates.getY();
+    }
+    public void setY(int y) {
+        coordinates.setY(y);
+    }
+    public int getX() {
+        return coordinates.getX();
+    }
+    public void setX(int x) {
+        coordinates.setX(x);
     }
     public List<Integer> getPossibleValues() {
         return possibleValues;
     }
-
-    @Override
-    public String toString() {
-        sudokuDrawer = SudokuDrawer.getInstance();
-        return sudokuDrawer.drawElement(this);
-    }
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (!(o instanceof SudokuElement)) return false;
-        SudokuElement that = (SudokuElement) o;
-        return getValue() == that.getValue() && getBoxX() == that.getBoxX() && getBoxY() == that.getBoxY() &&
-                getX() == that.getX() && getY() == that.getY() && getBoxNumber() == that.getBoxNumber();
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(getValue(), getBoxX(), getBoxY(), getX(), getY(), getBoxNumber());
-    }
-
-    public int getBoxX() {
-        return boxX;
-    }
-    public void setBoxX(int boxX) {
-        this.boxX = boxX;
-    }
-    public int getBoxY() {
-        return boxY;
-    }
-    public void setBoxY(int boxY) {
-        this.boxY = boxY;
-    }
-    public int getBoxNumber() {
-        return boxNumber;
-    }
-    public int getY() {
-        return y;
-    }
-    public void setY(int y) {
-        this.y = y;
-    }
-    public int getX() {
-        return x;
-    }
-    public void setX(int x) {
-        this.x = x;
-    }
-    public void setBoxNumber(int boxNumber) {
-        this.boxNumber = boxNumber;
-    }
     public void setValue(int value) {
-        this.value = value;
+        coordinates.setValue(value);
+    }
+    public int getValue() {
+        return coordinates.getValue();
+    }
+    public SudokuBox getSudokuBox() {
+        return sudokuBox;
+    }
+    public void setSudokuBox(SudokuBox sudokuBox) {
+        this.sudokuBox = sudokuBox;
     }
 }

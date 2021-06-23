@@ -1,13 +1,10 @@
 package com.kodilla.sudoku;
 
-import java.util.ArrayList;
 import java.util.List;
 
-public class SudokuValidator {
-    private static SudokuValidator sudokuValidator;
+public enum SudokuValidator {
+    INSTANCE;
     private boolean correct = true;
-
-    private SudokuValidator(){ }
 
     public boolean validateSize(int size) {
         boolean correct;
@@ -45,16 +42,8 @@ public class SudokuValidator {
         return correct;
     }
 
-    public static SudokuValidator getInstance() {
-        if(sudokuValidator == null) {
-            return new SudokuValidator();
-        }
-        return sudokuValidator;
-    }
-
     public boolean validateBoard(SudokuGame sudokuGame, SudokuBoard sudokuBoard) {
 
-        outerloop:
         for (SudokuRow sudokuRow : sudokuBoard.getBoard()) {
             for (SudokuElement sudokuElement : sudokuRow.getElementsInRow()) {
                 if(sudokuElement.getValue() != -1) {
@@ -63,8 +52,7 @@ public class SudokuValidator {
                             validateBox(sudokuGame, sudokuElement)) {
                         correct = true;
                     } else {
-                        correct = false;
-                        break outerloop;
+                        return false;
                     }
                 }
             }
@@ -108,5 +96,28 @@ public class SudokuValidator {
             }
         }
         return correct;
+    }
+
+    public boolean validateQuantity(String[] splitted) {
+        boolean correct = true;
+        if(splitted.length > 3) {
+            System.out.println("Incorrect input. Input has to contain only 3 values :" +
+                    " col, row and value\nTry again");
+            correct = false;
+        }
+        return correct;
+    }
+
+    public void validateValues(SudokuBoard sudokuBoard, Coordinates coordinates, int size) {
+        int col = coordinates.getY();
+        int row = coordinates.getX();
+        int value = coordinates.getValue();
+        if(col <= size && row <= size && value <= size &&
+                col != 0 && row != 0 && value !=0) {
+            sudokuBoard.getBoard().get(col - 1).getElementsInRow().get(row - 1).setValue(value);
+            sudokuBoard.getBoard().get(col - 1).getElementsInRow().get(row - 1).getPossibleValues().clear();
+        } else {
+            System.out.println("Incorrect input. Values cannot be greater than board size.\nTry again");
+        }
     }
 }

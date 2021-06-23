@@ -14,7 +14,8 @@ public class SudokuGuessingTestSuite {
     @Test
     void testCopingBoard() {
         //Given
-        SudokuBoard sudokuBoard = new SudokuBoard(9);
+        Coordinates coordinates = new Coordinates(-1, -1, 0);
+        SudokuBoard sudokuBoard = new SudokuBoard(9, coordinates);
 
         //When
         copiedBoard = sudokuBoard.deepCopy();

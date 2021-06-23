@@ -4,24 +4,25 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class SudokuBoard extends Prototype<SudokuBoard> {
-    private List<SudokuRow> board = new ArrayList<>();
-    private SudokuDrawer sudokuDrawer;
-    private int col = 0;
-    private int row = 0;
     private final int size;
-    private int quantity = 0;
+    private List<SudokuRow> board = new ArrayList<>();
+    private final Coordinates coordinates;
 
-    public SudokuBoard(int size) {
+
+    public SudokuBoard(int size, Coordinates coordinates) {
+        this.coordinates = coordinates;
         this.size = size;
+        int counter = 0;
         for(int i=0; i<size; i++) {
             SudokuRow sudokuRow = new SudokuRow(size);
             sudokuRow.setRowNumber(i);
             for (SudokuElement sudokuElement : sudokuRow.getElementsInRow()) {
                 sudokuElement.setY(i);
-                quantity++;
+                counter++;
             }
             this.board.add(sudokuRow);
         }
+        coordinates.setValue(counter);
         buildBoard();
         assingBoxes();
     }
@@ -38,7 +39,7 @@ public class SudokuBoard extends Prototype<SudokuBoard> {
         assignBoxCoordinates();
         for (SudokuRow sudokuRow : board) {
             for (SudokuElement sudokuElement : sudokuRow.getElementsInRow()) {
-                sudokuElement.setBoxNumber(sudokuElement.getBoxY() * col + sudokuElement.getBoxX());
+                sudokuElement.getSudokuBox().setBoxNumber(coordinates.getY());
             }
         }
     }
@@ -47,13 +48,14 @@ public class SudokuBoard extends Prototype<SudokuBoard> {
         int boxY = 0;
         for (SudokuRow sudokuRow : board) {
             int boxX = 0;
-            if(sudokuRow.getRowNumber()%col == 0 && sudokuRow.getRowNumber() != 0) boxY++;
+            if(sudokuRow.getRowNumber()%coordinates.getY() == 0 && sudokuRow.getRowNumber() != 0) boxY++;
             for (SudokuElement sudokuElement : sudokuRow.getElementsInRow()) {
-                if (sudokuElement.getX() % row == 0 && sudokuElement.getX() != 0) {
+                if (sudokuElement.getX() % coordinates.getX() == 0 && sudokuElement.getX() != 0) {
                     boxX++;
                 }
-                sudokuElement.setBoxX(boxX);
-                sudokuElement.setBoxY(boxY);
+                Coordinates BoxCoordinates = new Coordinates(boxX,boxY,-1);
+                SudokuBox sudokuBox = new SudokuBox(BoxCoordinates);
+                sudokuElement.setSudokuBox(sudokuBox);
             }
         }
     }
@@ -69,12 +71,12 @@ public class SudokuBoard extends Prototype<SudokuBoard> {
         int prev = divisiable.get(0);
         for(Integer num : divisiable) {
             if(num * num == size) {
-                col = num;
-                row = num;
+                coordinates.setY(num);
+                coordinates.setX(num);
                 break;
             }else if( prev * num == size) {
-                col = prev;
-                row = num;
+                coordinates.setY(prev);
+                coordinates.setX(num);
                 break;
             }else {
                 prev = num;
@@ -83,7 +85,8 @@ public class SudokuBoard extends Prototype<SudokuBoard> {
     }
 
     public SudokuBoard deepCopy() {
-        SudokuBoard clonedBoard = new SudokuBoard(size);
+        Coordinates coordinates = new Coordinates(-1, -1, 0);
+        SudokuBoard clonedBoard = new SudokuBoard(size, coordinates);
         try {
             clonedBoard = super.clone();
         } catch (CloneNotSupportedException e) {
@@ -100,7 +103,10 @@ public class SudokuBoard extends Prototype<SudokuBoard> {
                 copiedElement.setValue(sudokuElement.getValue());
                 copiedElement.setX(sudokuElement.getX());
                 copiedElement.setY(sudokuElement.getY());
-                copiedElement.setBoxNumber(sudokuElement.getBoxNumber());
+                Coordinates ElementCoordinates = new Coordinates(sudokuElement.getSudokuBox().getBoxX(),
+                        sudokuElement.getSudokuBox().getBoxY(),
+                        sudokuElement.getSudokuBox().getBoxNumber());
+                copiedElement.setSudokuBox(new SudokuBox(ElementCoordinates));
                 copiedElement.getPossibleValues().clear();
                 for(Integer i : sudokuElement.getPossibleValues()) {
                     copiedElement.getPossibleValues().add(i);
@@ -113,13 +119,13 @@ public class SudokuBoard extends Prototype<SudokuBoard> {
     }
 
     public int getSize() {
-        return quantity;
+        return coordinates.getValue();
     }
 
 
     @Override
     public String toString() {
-        sudokuDrawer = SudokuDrawer.getInstance();
-        return sudokuDrawer.drawBoard(this, col, row);
+        SudokuDrawer sudokuDrawer = SudokuDrawer.INSTANCE;
+        return sudokuDrawer.drawBoard(this, coordinates);
     }
 }

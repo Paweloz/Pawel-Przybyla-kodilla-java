@@ -2,28 +2,23 @@ package com.kodilla.sudoku;
 
 public class SudokuDto {
     private final SudokuBoard sudokuBoard;
-    private final int x;
-    private final int y;
-    private final int value;
+    private final Coordinates coordinates;
 
-    public SudokuDto(SudokuBoard sudokuBoard, int x, int y, int value) {
+    public SudokuDto(SudokuBoard sudokuBoard, Coordinates coordinates) {
         this.sudokuBoard = sudokuBoard;
-        this.x = x;
-        this.y = y;
-        this.value = value;
+        this.coordinates = coordinates;
     }
 
     public SudokuBoard getSudokuBoard() {
         return sudokuBoard;
     }
-
     public int getValue() {
-        return value;
+        return coordinates.getValue();
     }
     public int getX() {
-        return x;
+        return coordinates.getX();
     }
     public int getY() {
-        return y;
+        return coordinates.getY();
     }
 }

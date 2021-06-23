@@ -3,69 +3,79 @@ package com.kodilla.sudoku;
 import java.util.*;
 
 public class SudokuGame {
-    private final UserMenu userMenu;
+    private final IOService IOService;
     private final SudokuBoard sudokuBoard;
-    private SudokuValidator sudokuValidator;
+    private final Stack<SudokuDto> backTrack = new Stack<>();
+    private final static String ROW = "ROW";
+    private final static String COL = "COL";
+    private final static String BOX = "BOX";
     private boolean actionOccured = false;
     private boolean finished = false;
+    private boolean isAvaliable = true;
+    private int elementsWithTheSamePossibleNumber = 0;
     private SudokuBoard workingBoard;
-    private final Stack<SudokuDto> backTrack = new Stack<>();
-    boolean isAvaliable = true;
-    int elementsWithTheSamePossibleNumber = 0;
 
-    public SudokuGame(UserMenu userMenu, SudokuBoard sudokuBoard) {
+    public SudokuGame(IOService IOService, SudokuBoard sudokuBoard) {
         this.sudokuBoard = sudokuBoard;
-        this.userMenu = userMenu;
+        this.IOService = IOService;
     }
 
     public void initalize() {
-        userMenu.userInput(sudokuBoard);
+        IOService.getInitialValues(sudokuBoard);
     }
 
     public boolean resolveSudoku() {
         int filledElements = 0;
-        finished = false;
+        SudokuDto sudokuDto = new SudokuDto(sudokuBoard.deepCopy(), new Coordinates(-1,-1,0));
+        backTrack.push(sudokuDto);
         workingBoard = sudokuBoard.deepCopy();
-        backTrack.push(new SudokuDto(sudokuBoard.deepCopy(), -1, -1, 0));
-        sudokuValidator = SudokuValidator.getInstance();
-
         checkIncorrectValues();
+
         while (!finished) {
             if(filledElements == workingBoard.getSize()) {
                 finished = true;
             } else  {
-                filledElements = 0;
-                for(SudokuRow sudokuRow : workingBoard.getBoard()) {
-                    for(SudokuElement sudokuElement : sudokuRow.getElementsInRow() ) {
-                        if(sudokuElement.getValue() == -1) {
-                            HashSet<Integer> value = collectValues(sudokuRow, sudokuElement);
-                            setValueToElement(sudokuElement, value);
-                        }else {
-                            filledElements++;
-                        }
-                    }
-                }
-                if(!actionOccured) {
-                    backTrack.push(guessing());
-                }
-                actionOccured = false;
+                filledElements = resolveElements();
+                guessValueIfNoActionOccured();
             }
         }
         System.out.println(workingBoard);
         return true;
     }
 
-    private HashSet<Integer> collectValues(SudokuRow sudokuRow, SudokuElement sudokuElement) {
-        HashSet<Integer> value = new HashSet<>();
-        value.addAll(checkRow(sudokuElement, sudokuRow));
-        value.addAll(checkColumn(sudokuElement));
-        value.addAll(checkBox(sudokuElement));
-        return value;
+    private int resolveElements() {
+        int filledElements = 0;
+        for(SudokuRow sudokuRow : workingBoard.getBoard()) {
+            for(SudokuElement sudokuElement : sudokuRow.getElementsInRow() ) {
+                if(sudokuElement.getValue() == -1) {
+                    HashSet<Integer> value = collectValues(sudokuElement);
+                    setValueToElement(sudokuElement, value);
+                }else {
+                    filledElements++;
+                }
+            }
+        }
+        return filledElements;
+    }
+
+    private void guessValueIfNoActionOccured() {
+        if(!actionOccured) {
+            guessing();
+        }
+        actionOccured = false;
+    }
+
+    private HashSet<Integer> collectValues(SudokuElement sudokuElement) {
+        HashSet<Integer> possibleValues = new HashSet<>();
+        possibleValues.addAll(resolvePossibilites(sudokuElement,ROW));
+        possibleValues.addAll(resolvePossibilites(sudokuElement,COL));
+        possibleValues.addAll(resolvePossibilites(sudokuElement, BOX));
+        return possibleValues;
     }
 
     private void setValueToElement(SudokuElement sudokuElement, HashSet<Integer> value) {
-        Object[] table = value.toArray();
         if(value.size() == 1) {
+            Object[] table = value.toArray();
             int valueToSet = (int) table[0];
             sudokuElement.setValue(valueToSet);
             sudokuElement.getPossibleValues().clear();
@@ -74,53 +84,43 @@ public class SudokuGame {
     }
 
     private void checkIncorrectValues() {
-        if(!sudokuValidator.validateBoard(this, sudokuBoard)) {
-            finished = true;
+        SudokuValidator validator = SudokuValidator.INSTANCE;
+        if(!validator.validateBoard(this, sudokuBoard)) {
             System.out.println("Given sudoku is incorrect");
+            finished = true;
         }
     }
 
-    public List<Integer> checkRow(SudokuElement sudokuElement, SudokuRow sudokuRow) {
-        List<Integer> possibleValues = new ArrayList<>();
-        List<Integer> takenValues = new ArrayList<>();
-
-        for(Integer i : sudokuElement.getPossibleValues()) {
-            for (SudokuElement element: sudokuRow.getElementsInRow()) {
-                checkElement(sudokuElement, takenValues, i, element);
-            }
-            addPossibleValues(possibleValues, i);
-        }
-        removePossibleElements(sudokuElement, takenValues);
-        return possibleValues;
-    }
-
-    public List<Integer> checkColumn(SudokuElement sudokuElement) {
-        List<Integer> possibleValues = new ArrayList<>();
-        List<Integer> takenValues = new ArrayList<>();
-
-        for( Integer i : sudokuElement.getPossibleValues()) {
-            for(SudokuRow sudokuRow : workingBoard.getBoard()) {
-                int x = sudokuElement.getX();
-                SudokuElement element = sudokuRow.getElementsInRow().get(x);
-                checkElement(sudokuElement, takenValues, i, element);
-            }
-            addPossibleValues(possibleValues, i);
-        }
-        removePossibleElements(sudokuElement, takenValues);
-        return possibleValues;
-    }
-
-
-    public List<Integer> checkBox(SudokuElement sudokuElement) {
+    private List<Integer> resolvePossibilites(SudokuElement sudokuElement, String choice) {
         List<Integer> possibleValues = new ArrayList<>();
         List<Integer> takenValues = new ArrayList<>();
         List<SudokuElement> elementsInBox = selectBox(sudokuElement);
 
         for(Integer i : sudokuElement.getPossibleValues()) {
-            for(SudokuElement element : elementsInBox) {
-                checkElement(sudokuElement, takenValues, i, element);
+            switch (choice) {
+                case BOX :
+                    for(SudokuElement element : elementsInBox) {
+                        checkElement(sudokuElement, takenValues, i, element);
+                    }
+                    addPossibleValues(possibleValues, i);
+                    break;
+                case ROW :
+                    for (SudokuElement element: workingBoard.getBoard().get(sudokuElement.getY()).getElementsInRow()) {
+                        checkElement(sudokuElement, takenValues, i, element);
+                    }
+                    addPossibleValues(possibleValues, i);
+                    break;
+                case COL :
+                    for(SudokuRow sudokuRow : workingBoard.getBoard()) {
+                        int x = sudokuElement.getX();
+                        SudokuElement element = sudokuRow.getElementsInRow().get(x);
+                        checkElement(sudokuElement, takenValues, i, element);
+                    }
+                    addPossibleValues(possibleValues, i);
+                    break;
+                default:
+                    break;
             }
-            addPossibleValues(possibleValues, i);
         }
         removePossibleElements(sudokuElement, takenValues);
         return possibleValues;
@@ -152,7 +152,7 @@ public class SudokuGame {
         List<SudokuElement> elementsInBox = new ArrayList<>();
         for( SudokuRow sudokuRow : workingBoard.getBoard()) {
             for( SudokuElement elementToCheck : sudokuRow.getElementsInRow()) {
-                if(sudokuElement.getBoxNumber() == elementToCheck.getBoxNumber()) {
+                if(sudokuElement.getSudokuBox().getBoxNumber() == elementToCheck.getSudokuBox().getBoxNumber()) {
                     elementsInBox.add(elementToCheck);
                 }
             }
@@ -174,26 +174,24 @@ public class SudokuGame {
         }
     }
 
-    public SudokuDto guessing() {
-        int x = -1, y = -1;
-        int gueesingNumber = 0;
+    public void guessing() {
+        int x, y, gueesingNumber;
         Random gen = new Random();
         SudokuBoard copiedBoard = workingBoard.deepCopy();
 
-        outerloop :
         for(SudokuRow sudokuRow : workingBoard.getBoard()) {
             for(SudokuElement sudokuElement : sudokuRow.getElementsInRow()) {
                 if(sudokuElement.getValue() == -1 && !sudokuElement.getPossibleValues().isEmpty()) {
+                    int randomValue = gen.nextInt(sudokuElement.getPossibleValues().size());
                     x = sudokuElement.getX();
                     y = sudokuElement.getY();
-                    int randomValue = gen.nextInt(sudokuElement.getPossibleValues().size());
                     gueesingNumber = sudokuElement.getPossibleValues().get(randomValue);
                     sudokuElement.setValue(gueesingNumber);
-                    break outerloop;
+                    backTrack.push(new SudokuDto(copiedBoard,new Coordinates(x,y,gueesingNumber)));
+                    return;
                 }
             }
         }
-        return new SudokuDto(copiedBoard, x, y, gueesingNumber);
     }
 
     public SudokuBoard resumeBoard() throws InvalidSudokuException {
@@ -209,7 +207,6 @@ public class SudokuGame {
     }
 
     private void removeGuessedNumberFromPossibleValues(SudokuDto clonedBoard) {
-        outerloop :
         for(SudokuRow sudokuRow : workingBoard.getBoard()) {
             for(SudokuElement sudokuElement : sudokuRow.getElementsInRow()) {
                 if(sudokuElement.getX() == clonedBoard.getX() &&
@@ -217,7 +214,7 @@ public class SudokuGame {
                         clonedBoard.getValue() != 0 &&
                 sudokuElement.getPossibleValues().contains(clonedBoard.getValue())) {
                     sudokuElement.getPossibleValues().remove((Object) clonedBoard.getValue());
-                    break outerloop;
+                    return;
                 }
             }
         }
