@@ -25,12 +25,12 @@ public class Watcher {
     public Object measureTime(final ProceedingJoinPoint proceedingJoinPoint) throws Throwable {
         Object result;
         try {
-            long begin = System.currentTimeMillis();                  // [1]
+            long begin = System.currentTimeMillis();
             result = proceedingJoinPoint.proceed();
-            long end = System.currentTimeMillis();                    // [2]
-            LOGGER.info("Time consumed " + (end - begin) + "[ms]");   // [3]
+            long end = System.currentTimeMillis();
+            LOGGER.info("Time consumed " + (end - begin) + "[ms]");
         } catch (Throwable throwable) {
-            LOGGER.error(throwable.getMessage());               // [4]
+            LOGGER.error(throwable.getMessage());
             throw throwable;
         }
         return result;
