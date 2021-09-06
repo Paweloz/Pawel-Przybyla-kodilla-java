@@ -5,6 +5,7 @@ import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import org.openqa.selenium.By;
@@ -36,8 +37,8 @@ public class CrudAppTestSuite {
     public void shouldCreateTrelloCard() throws InterruptedException {
         String taskName = createCrudAppTestTask();
         sendTestTaskToTrello(taskName);
-        driver.close();
         assertTrue(checkTaskExistsInTrello(taskName));
+        assertTrue(checkDeleteTaskFromCrud(taskName));
     }
 
     private String createCrudAppTestTask() throws InterruptedException {
@@ -112,5 +113,23 @@ public class CrudAppTestSuite {
         driverTrello.close();
 
         return result;
+    }
+
+    private boolean checkDeleteTaskFromCrud(String taskName) {
+        driver.navigate().refresh();
+        boolean result;
+
+        driver.get(BASE_URL);
+        driver.findElements(By.xpath("//form[@class=\"datatable__row\"]")).stream()
+                .filter(anyForm ->
+                        anyForm.findElement(By.xpath("//p[@class=\"datatable__field-value\"]"))
+                                .getText().equals(taskName))
+                .map(form -> form.findElement(By.xpath("//button[4]")))
+                .forEach(WebElement::click);
+
+        result = driver.findElements(By.xpath("//form[@class=\"datatable__row\"]")).stream()
+                .anyMatch(el -> el.findElement(By.xpath("//p[@class=\"datatable__field-value\"]"))
+                        .getText().equals(taskName));
+        return !result;
     }
 }
